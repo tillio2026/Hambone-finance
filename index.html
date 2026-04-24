@@ -49,7 +49,6 @@
     overflow-x: hidden;
   }
 
-  /* Floral scattered background */
   .floral-bg {
     position: fixed;
     inset: 0;
@@ -69,10 +68,7 @@
     padding: env(safe-area-inset-top) 0 calc(96px + env(safe-area-inset-bottom)) 0;
   }
 
-  header {
-    text-align: center;
-    padding: 22px 16px 14px;
-  }
+  header { text-align: center; padding: 22px 16px 14px; }
   header .logo {
     display: inline-flex;
     align-items: center;
@@ -88,7 +84,6 @@
   header .logo svg { flex: 0 0 auto; }
   header .sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
 
-  /* Cards */
   .card {
     background: var(--card);
     backdrop-filter: blur(10px);
@@ -99,28 +94,11 @@
     margin: 12px 14px;
     box-shadow: var(--shadow);
   }
-  .card h2 {
-    margin: 0 0 8px 0;
-    font-size: 18px;
-    color: var(--pink-600);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .card h3 {
-    margin: 16px 0 8px;
-    font-size: 15px;
-    color: var(--purple-600);
-  }
+  .card h2 { margin: 0 0 8px 0; font-size: 18px; color: var(--pink-600); }
+  .card h3 { margin: 16px 0 8px; font-size: 15px; color: var(--purple-600); }
   .muted { color: var(--muted); font-size: 13px; }
 
-  /* Stat tiles */
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 12px;
-  }
+  .stat-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; }
   .stat {
     background: linear-gradient(135deg, rgba(252, 231, 243, 0.9), rgba(233, 213, 255, 0.9));
     border-radius: 16px;
@@ -132,11 +110,7 @@
   .stat .value.pos { color: var(--green); }
   .stat .value.neg { color: var(--red); }
 
-  /* Inputs */
-  input, select, button {
-    font: inherit;
-    color: inherit;
-  }
+  input, select, button { font: inherit; color: inherit; }
   input[type="text"], input[type="number"], input[type="date"], input[type="password"], select {
     width: 100%;
     padding: 12px 14px;
@@ -160,16 +134,8 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
-  .row2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .row3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-  }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
 
   .btn {
     display: inline-flex;
@@ -190,23 +156,10 @@
     transition: transform 0.1s, box-shadow 0.15s;
   }
   .btn:active { transform: scale(0.98); }
-  .btn.secondary {
-    background: white;
-    color: var(--pink-600);
-    border: 1.5px solid var(--pink-300);
-    box-shadow: none;
-  }
-  .btn.danger {
-    background: linear-gradient(135deg, #fb7185, #be123c);
-  }
-  .btn.small {
-    padding: 6px 12px;
-    font-size: 13px;
-    width: auto;
-    margin: 0;
-  }
+  .btn.secondary { background: white; color: var(--pink-600); border: 1.5px solid var(--pink-300); box-shadow: none; }
+  .btn.danger { background: linear-gradient(135deg, #fb7185, #be123c); }
+  .btn.small { padding: 6px 12px; font-size: 13px; width: auto; margin: 0; }
 
-  /* Lists */
   .list { margin-top: 10px; }
   .list-item {
     display: flex;
@@ -221,19 +174,9 @@
   .list-item .info { flex: 1; min-width: 0; }
   .list-item .info .title { font-weight: 600; font-size: 14px; }
   .list-item .info .sub { font-size: 11px; color: var(--muted); }
-  .list-item .amt { font-weight: 700; margin: 0 8px; }
-  .list-item .x {
-    border: none;
-    background: transparent;
-    color: var(--red);
-    font-size: 20px;
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 8px;
-  }
+  .list-item .x { border: none; background: transparent; color: var(--red); font-size: 20px; cursor: pointer; padding: 4px 8px; border-radius: 8px; }
   .list-item .x:active { background: rgba(190, 18, 60, 0.1); }
 
-  /* Tabs */
   nav.tabs {
     position: fixed;
     bottom: 0; left: 0; right: 0;
@@ -258,7 +201,6 @@
     cursor: pointer;
     font-size: 10px;
     font-weight: 600;
-    transition: color 0.15s;
   }
   nav.tabs button.active { color: var(--pink-600); }
   nav.tabs button svg { width: 22px; height: 22px; }
@@ -266,49 +208,16 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
-  /* Health gauge */
-  .gauge-wrap {
-    display: flex;
-    justify-content: center;
-    margin: 8px 0 4px;
-  }
+  .gauge-wrap { display: flex; justify-content: center; margin: 8px 0 4px; }
   .gauge { width: 220px; height: 140px; }
-  .score-label {
-    text-align: center;
-    font-weight: 800;
-    font-size: 15px;
-    margin-top: -20px;
-  }
-  .score-sub {
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
 
-  .progress {
-    height: 8px;
-    background: rgba(236, 72, 153, 0.12);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 4px;
-  }
-  .progress > div {
-    height: 100%;
-    background: linear-gradient(90deg, var(--pink-400), var(--purple-400));
-    border-radius: 8px;
-    transition: width 0.4s;
-  }
+  .progress { height: 8px; background: rgba(236, 72, 153, 0.12); border-radius: 8px; overflow: hidden; margin-top: 4px; }
+  .progress > div { height: 100%; background: linear-gradient(90deg, var(--pink-400), var(--purple-400)); border-radius: 8px; transition: width 0.4s; }
 
-  /* Passcode screen */
   .lock-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: fixed; inset: 0; z-index: 200;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
     padding: 20px;
     background:
       radial-gradient(circle at 20% 10%, rgba(244, 114, 182, 0.4), transparent 50%),
@@ -316,8 +225,7 @@
       linear-gradient(135deg, #fdf2f8, #fae8ff);
   }
   .lock-screen h1 {
-    font-size: 30px;
-    margin: 0 0 4px;
+    font-size: 30px; margin: 0 0 4px;
     background: linear-gradient(135deg, var(--pink-600), var(--purple-600));
     -webkit-background-clip: text;
     background-clip: text;
@@ -334,18 +242,9 @@
     box-shadow: var(--shadow);
   }
   .dots { display: flex; justify-content: center; gap: 12px; margin: 18px 0; }
-  .dots div {
-    width: 16px; height: 16px; border-radius: 50%;
-    border: 2px solid var(--pink-400);
-    background: transparent;
-    transition: background 0.15s;
-  }
+  .dots div { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--pink-400); background: transparent; transition: background 0.15s; }
   .dots div.filled { background: var(--pink-500); }
-  .keypad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
+  .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .keypad button {
     aspect-ratio: 1.4 / 1;
     border-radius: 14px;
@@ -360,89 +259,32 @@
   .keypad button:active { transform: scale(0.97); background: var(--pink-50); }
   .lock-error { color: var(--red); font-size: 13px; min-height: 18px; text-align: center; margin-top: 8px; }
 
-  .tag {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 11px;
-    font-weight: 700;
-    margin-left: 6px;
-  }
-  .tag.ok { background: #dcfce7; color: var(--green); }
-  .tag.bad { background: #ffe4e6; color: var(--red); }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; margin-left: 6px; }
   .tag.neutral { background: var(--pink-100); color: var(--pink-600); }
+  .tag.w2 { background: #dbeafe; color: #1d4ed8; }
+  .tag.contractor { background: #fef3c7; color: #b45309; }
+  .tag.capital_gains { background: #ede9fe; color: #6d28d9; }
+  .tag.interest { background: #dcfce7; color: #15803d; }
 
   details { margin-top: 8px; }
-  details summary {
-    cursor: pointer;
-    font-size: 13px;
-    color: var(--purple-600);
-    font-weight: 600;
-    padding: 4px 0;
-  }
-  .toggle {
-    display: inline-flex;
-    background: var(--pink-100);
-    border-radius: 12px;
-    padding: 3px;
-    margin-bottom: 10px;
-  }
-  .toggle button {
-    padding: 6px 14px;
-    border: none;
-    background: transparent;
-    font-weight: 600;
-    color: var(--muted);
-    border-radius: 10px;
-    font-size: 13px;
-    cursor: pointer;
-  }
-  .toggle button.active {
-    background: white;
-    color: var(--pink-600);
-    box-shadow: 0 2px 4px rgba(236, 72, 153, 0.15);
-  }
+  details summary { cursor: pointer; font-size: 13px; color: var(--purple-600); font-weight: 600; padding: 4px 0; }
 
-  table.tax-grid {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-top: 10px;
-  }
-  table.tax-grid th, table.tax-grid td {
-    padding: 8px 6px;
-    text-align: right;
-    border-bottom: 1px solid rgba(236, 72, 153, 0.1);
-  }
+  .toggle { display: inline-flex; background: var(--pink-100); border-radius: 12px; padding: 3px; margin-bottom: 10px; }
+  .toggle button { padding: 6px 14px; border: none; background: transparent; font-weight: 600; color: var(--muted); border-radius: 10px; font-size: 13px; cursor: pointer; }
+  .toggle button.active { background: white; color: var(--pink-600); box-shadow: 0 2px 4px rgba(236, 72, 153, 0.15); }
+
+  table.tax-grid { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+  table.tax-grid th, table.tax-grid td { padding: 8px 6px; text-align: right; border-bottom: 1px solid rgba(236, 72, 153, 0.1); }
   table.tax-grid th:first-child, table.tax-grid td:first-child { text-align: left; }
   table.tax-grid th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; }
 
-  .settings-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(236, 72, 153, 0.1);
-  }
+  .settings-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(236, 72, 153, 0.1); }
   .settings-row:last-child { border-bottom: none; }
 
-  .ribbon {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
-    margin-bottom: 6px;
-  }
-
-  /* Install banner */
   .install-banner {
     position: fixed;
     bottom: 80px;
-    left: 12px;
-    right: 12px;
+    left: 12px; right: 12px;
     background: white;
     border: 1.5px solid var(--pink-300);
     border-radius: 14px;
@@ -455,12 +297,23 @@
     font-size: 13px;
   }
   .install-banner .btn.small { margin-left: auto; }
+
+  .source-card {
+    background: linear-gradient(135deg, rgba(252,231,243,0.7), rgba(233,213,255,0.7));
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(236, 72, 153, 0.18);
+  }
+  .source-card .title { font-weight: 700; font-size: 15px; }
+  .source-card .meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .source-card .ytd { font-weight: 800; font-size: 16px; color: var(--pink-600); }
+  .source-card .row-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 </style>
 </head>
 <body>
   <div class="floral-bg"></div>
 
-  <!-- Passcode lock screen -->
   <div id="lockScreen" class="lock-screen" style="display:none">
     <h1>Hammbone Finance</h1>
     <p id="lockPrompt">Enter your 4-digit passcode</p>
@@ -478,9 +331,9 @@
         <button data-k="7">7</button>
         <button data-k="8">8</button>
         <button data-k="9">9</button>
-        <button data-k="clear">✕</button>
+        <button data-k="clear">x</button>
         <button data-k="0">0</button>
-        <button data-k="back">⌫</button>
+        <button data-k="back">&larr;</button>
       </div>
       <div class="lock-error" id="lockError"></div>
     </div>
@@ -500,16 +353,15 @@
         </svg>
         Hammbone Finance
       </div>
-      <div class="sub" id="subTitle">Loading…</div>
+      <div class="sub" id="subTitle">Loading...</div>
     </header>
 
-    <!-- INCOME TAB -->
     <div class="tab-content active" id="tab-income">
       <div class="card">
-        <h2>💖 Earned Income</h2>
+        <h2>Earned Income</h2>
         <div class="stat-row">
           <div class="stat">
-            <div class="label">YTD Gross Earned</div>
+            <div class="label">YTD Gross Income</div>
             <div class="value" id="ytdGross">$0.00</div>
           </div>
           <div class="stat">
@@ -519,38 +371,78 @@
         </div>
         <div class="stat-row">
           <div class="stat">
-            <div class="label">Avg Paycheck</div>
-            <div class="value" id="avgCheck">$0.00</div>
+            <div class="label">YTD W-2 / 1099</div>
+            <div class="value" id="ytdEarned">$0.00</div>
           </div>
           <div class="stat">
-            <div class="label">Projected Annual</div>
-            <div class="value" id="projAnnual">$0.00</div>
+            <div class="label">YTD Investment</div>
+            <div class="value" id="ytdInvestment">$0.00</div>
           </div>
         </div>
+      </div>
 
-        <h3>Add Paycheck</h3>
+      <div class="card">
+        <h2>Income Sources</h2>
+        <div class="muted">Create a source for each job or income stream. Each paycheck gets tagged to one.</div>
+
+        <h3>Add Source</h3>
+        <label>Name</label>
+        <input type="text" id="srcName" placeholder="Main Job, Side Gig, Brokerage..." />
         <div class="row2">
           <div>
-            <label>Date</label>
-            <input type="date" id="payDate" />
+            <label>Income Type</label>
+            <select id="srcType">
+              <option value="w2">W-2 Employee</option>
+              <option value="contractor">1099 Contractor</option>
+              <option value="capital_gains">Capital Gains</option>
+              <option value="interest">Interest Income</option>
+            </select>
           </div>
           <div>
-            <label>Gross Amount</label>
-            <input type="number" id="payAmount" step="0.01" placeholder="0.00" inputmode="decimal" />
+            <label>Pay Frequency</label>
+            <select id="srcFreq">
+              <option value="weekly">Weekly</option>
+              <option value="biweekly" selected>Bi-weekly</option>
+              <option value="semimonthly">Semi-monthly</option>
+              <option value="monthly">Monthly</option>
+              <option value="irregular">Irregular</option>
+            </select>
           </div>
         </div>
-        <button class="btn" onclick="addPaycheck()">Save Paycheck</button>
+        <button class="btn" onclick="addSource()">Save Source</button>
+
+        <h3>My Sources</h3>
+        <div id="sourceList"></div>
+      </div>
+
+      <div class="card">
+        <h2>Add Paycheck</h2>
+        <div id="noSourceMsg" class="muted" style="display:none">Create at least one income source above before adding a paycheck.</div>
+        <div id="payForm">
+          <label>Income Source</label>
+          <select id="paySource"></select>
+          <div class="row2">
+            <div>
+              <label>Date</label>
+              <input type="date" id="payDate" />
+            </div>
+            <div>
+              <label>Gross Amount</label>
+              <input type="number" id="payAmount" step="0.01" placeholder="0.00" inputmode="decimal" />
+            </div>
+          </div>
+          <button class="btn" onclick="addPaycheck()">Save Paycheck</button>
+        </div>
 
         <h3>Paycheck History</h3>
         <div class="list" id="paycheckList"></div>
       </div>
     </div>
 
-    <!-- TAXES TAB -->
     <div class="tab-content" id="tab-taxes">
       <div class="card">
-        <h2>🧾 Taxes</h2>
-        <div class="muted">Camp Hill, PA · Single filer · Auto-adjusts to YTD income</div>
+        <h2>Taxes</h2>
+        <div class="muted">Camp Hill, PA &middot; Single filer &middot; Rate auto-adjusts as YTD income grows</div>
 
         <div class="stat-row" style="margin-top:12px">
           <div class="stat">
@@ -558,23 +450,23 @@
             <div class="value" id="taxesPaidYtd">$0.00</div>
           </div>
           <div class="stat">
-            <div class="label">Projected Annual Liability</div>
-            <div class="value" id="projTaxLiability">$0.00</div>
+            <div class="label">Expected Taxes on YTD Income</div>
+            <div class="value" id="expectedPaid">$0.00</div>
           </div>
         </div>
         <div class="stat-row">
           <div class="stat">
-            <div class="label">Expected Paid by Now</div>
-            <div class="value" id="expectedPaid">$0.00</div>
+            <div class="label">Effective Tax Rate (YTD)</div>
+            <div class="value" id="effectiveRate">0%</div>
           </div>
           <div class="stat">
-            <div class="label">Effective Tax Rate</div>
-            <div class="value" id="effectiveRate">0%</div>
+            <div class="label">Marginal Federal Bracket</div>
+            <div class="value" id="marginalRate">0%</div>
           </div>
         </div>
 
-        <div id="taxDeltaCard" class="stat" style="margin-top:6px; background: linear-gradient(135deg, #fce7f3, #e9d5ff);">
-          <div class="label">Surplus / Deficit (paid vs. expected so far)</div>
+        <div class="stat" style="margin-top:6px; background: linear-gradient(135deg, #fce7f3, #e9d5ff);">
+          <div class="label">Surplus / Deficit (paid vs. expected on YTD)</div>
           <div class="value" id="taxDelta">$0.00</div>
           <div class="muted" id="taxDeltaMsg">Log a paycheck to get started.</div>
         </div>
@@ -614,7 +506,7 @@
         <div class="row2">
           <div>
             <label>LST ($2 / pay)</label>
-            <input type="number" step="0.01" id="taxLST" placeholder="2.00" inputmode="decimal" />
+            <input type="number" step="0.01" id="taxLST" placeholder="0.00" inputmode="decimal" />
           </div>
           <div>
             <label>Other</label>
@@ -630,11 +522,21 @@
               <th>Tax</th>
               <th>Paid</th>
               <th>Expected</th>
-              <th>Δ</th>
+              <th>&Delta;</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
+
+        <details>
+          <summary>See how each income type is taxed</summary>
+          <div class="muted" style="margin-top:8px">
+            <b>W-2:</b> Federal brackets + SS 6.2% (cap $176,100) + Medicare 1.45% + PA 3.07% + Local EIT 1% + LST<br>
+            <b>1099 Contractor:</b> Federal brackets + Self-Employment tax 14.13% + PA 3.07% + Local EIT 1%<br>
+            <b>Capital Gains:</b> Treated as ordinary federal (add long-term flag for LTCG rates later) + PA 3.07%<br>
+            <b>Interest:</b> Federal brackets + PA 3.07%
+          </div>
+        </details>
 
         <details>
           <summary>See tax entry history</summary>
@@ -643,10 +545,9 @@
       </div>
     </div>
 
-    <!-- BILLS TAB -->
     <div class="tab-content" id="tab-bills">
       <div class="card">
-        <h2>💐 Bills</h2>
+        <h2>Bills</h2>
         <div class="toggle" id="billToggle">
           <button class="active" data-view="monthly">Monthly</button>
           <button data-view="weekly">Weekly</button>
@@ -668,7 +569,7 @@
             <div class="value" id="leftOver">$0.00</div>
           </div>
           <div class="stat">
-            <div class="label">Bills Vault Balance</div>
+            <div class="label">Bills Vault Balance (this month)</div>
             <div class="value" id="vaultBalance">$0.00</div>
           </div>
         </div>
@@ -679,7 +580,7 @@
           <div class="muted" id="vaultMsg">Add your bills and vault deposits.</div>
         </div>
 
-        <h3>💰 Bills Vault</h3>
+        <h3>Bills Vault</h3>
         <div class="muted">Each paycheck, log what you moved into your SoFi "Bills" vault.</div>
         <div class="row2">
           <div>
@@ -697,11 +598,11 @@
           <div class="list" id="vaultList"></div>
         </details>
 
-        <h3>📝 My Bills</h3>
+        <h3>My Bills</h3>
         <div class="row2">
           <div>
             <label>Bill Name</label>
-            <input type="text" id="billName" placeholder="Rent, Netflix…" />
+            <input type="text" id="billName" placeholder="Rent, Netflix..." />
           </div>
           <div>
             <label>Monthly Amount</label>
@@ -711,15 +612,14 @@
         <button class="btn" onclick="addBill()">Save Bill</button>
 
         <h3>Bills Breakdown</h3>
-        <div class="muted" id="billsBreakdownMsg">Bi-weekly ratio shows how much of each bill is covered by your first paycheck vault vs. still needed from your second paycheck.</div>
+        <div class="muted">Progress bar shows how much of each bill is covered by your vault right now.</div>
         <div class="list" id="billsList"></div>
       </div>
     </div>
 
-    <!-- SAVINGS TAB -->
     <div class="tab-content" id="tab-savings">
       <div class="card">
-        <h2>🌸 Savings Vaults</h2>
+        <h2>Savings Vaults</h2>
         <div class="stat-row">
           <div class="stat">
             <div class="label">Total Saved</div>
@@ -770,10 +670,9 @@
       </div>
     </div>
 
-    <!-- HEALTH SCORE TAB -->
     <div class="tab-content" id="tab-health">
       <div class="card">
-        <h2>✨ Financial Health Score</h2>
+        <h2>Financial Health Score</h2>
         <div class="gauge-wrap">
           <svg class="gauge" viewBox="0 0 220 140">
             <defs>
@@ -796,22 +695,22 @@
         <details>
           <summary>How the score works</summary>
           <div class="muted" style="margin-top:8px">
-            Score is a weighted blend:
-            <br>• <b>Income consistency</b> (20): do you log paychecks regularly?
-            <br>• <b>Tax discipline</b> (20): are you withholding close to what you'll owe?
-            <br>• <b>Bills coverage</b> (25): does your vault cover your bills?
-            <br>• <b>Surplus rate</b> (15): how much take-home is left after bills?
-            <br>• <b>Savings cushion</b> (20): savings vs. 3 months of bills.
+            Score is a weighted blend:<br>
+            &bull; <b>Income consistency</b> (20): are you logging paychecks for each active source at the expected cadence?<br>
+            &bull; <b>Tax discipline</b> (20): are you withholding close to what you'll owe on YTD?<br>
+            &bull; <b>Bills coverage</b> (25): does your vault cover your bills?<br>
+            &bull; <b>Surplus rate</b> (15): how much take-home is left after bills?<br>
+            &bull; <b>Savings cushion</b> (20): savings vs. 3 months of bills.
           </div>
         </details>
       </div>
 
       <div class="card">
-        <h2>⚙️ Settings</h2>
+        <h2>Settings</h2>
         <div class="settings-row">
           <div>
             <div style="font-weight:600">Your Name</div>
-            <div class="muted" id="nameDisplay">—</div>
+            <div class="muted" id="nameDisplay">--</div>
           </div>
           <button class="btn small secondary" onclick="changeName()">Change</button>
         </div>
@@ -846,15 +745,13 @@
       </div>
     </div>
 
-    <!-- Install banner -->
     <div class="install-banner" id="installBanner">
-      <span>💗 Add Hammbone Finance to your home screen</span>
+      <span>Add Hammbone Finance to your home screen</span>
       <button class="btn small" id="installBtn">Install</button>
-      <button class="btn small secondary" onclick="document.getElementById('installBanner').style.display='none'">×</button>
+      <button class="btn small secondary" onclick="document.getElementById('installBanner').style.display='none'">x</button>
     </div>
   </div>
 
-  <!-- Bottom Tabs -->
   <nav class="tabs" id="tabNav" style="display:none">
     <button data-tab="income" class="active">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -884,12 +781,10 @@
    Single-file PWA. All data in localStorage on this device only.
    ============================================================ */
 
-// ---------- Tax config (2025 single filer, Camp Hill PA) ----------
 const TAX_CONFIG = {
   year: 2025,
-  payPeriodsPerYear: 26,                 // bi-weekly
   federalStandardDeduction: 15000,
-  federalBrackets: [                     // (upper, rate) on taxable income after std deduction
+  federalBrackets: [
     [11925, 0.10],
     [48475, 0.12],
     [103350, 0.22],
@@ -901,48 +796,62 @@ const TAX_CONFIG = {
   ssRate: 0.062,
   ssWageBase: 176100,
   medicareRate: 0.0145,
-  medicareAddlRate: 0.009,               // on wages over $200k (single)
+  medicareAddlRate: 0.009,
   medicareAddlThreshold: 200000,
+  seTaxableFraction: 0.9235,
   paRate: 0.0307,
-  localEitRate: 0.01,                    // Camp Hill Borough + School District combined
-  lstAnnual: 52,                         // $2 per biweekly pay
+  localEitRate: 0.01,
+  lstAnnual: 52,
 };
 
-function calcFederal(gross) {
-  const taxable = Math.max(0, gross - TAX_CONFIG.federalStandardDeduction);
+const INCOME_TYPES = {
+  w2:            { label: "W-2",             short: "W-2"     },
+  contractor:    { label: "1099 Contractor", short: "1099"    },
+  capital_gains: { label: "Capital Gains",   short: "Cap Gain"},
+  interest:      { label: "Interest Income", short: "Interest"},
+};
+const FREQ_LABELS = {
+  weekly: "Weekly",
+  biweekly: "Bi-weekly",
+  semimonthly: "Semi-monthly",
+  monthly: "Monthly",
+  irregular: "Irregular",
+};
+const FREQ_PER_YEAR = {
+  weekly: 52, biweekly: 26, semimonthly: 24, monthly: 12, irregular: 0,
+};
+
+function calcFederalTax(taxableIncome) {
   let tax = 0, prev = 0;
   for (const [upper, rate] of TAX_CONFIG.federalBrackets) {
-    if (taxable > upper) {
+    if (taxableIncome > upper) {
       tax += (upper - prev) * rate;
       prev = upper;
     } else {
-      tax += Math.max(0, taxable - prev) * rate;
+      tax += Math.max(0, taxableIncome - prev) * rate;
       return tax;
     }
   }
   return tax;
 }
-function calcSS(gross)      { return Math.min(gross, TAX_CONFIG.ssWageBase) * TAX_CONFIG.ssRate; }
-function calcMedicare(g)    {
-  let t = g * TAX_CONFIG.medicareRate;
-  if (g > TAX_CONFIG.medicareAddlThreshold) t += (g - TAX_CONFIG.medicareAddlThreshold) * TAX_CONFIG.medicareAddlRate;
-  return t;
+function marginalFederalRate(taxableIncome) {
+  for (const [upper, rate] of TAX_CONFIG.federalBrackets) {
+    if (taxableIncome <= upper) return rate;
+  }
+  return TAX_CONFIG.federalBrackets[TAX_CONFIG.federalBrackets.length - 1][1];
 }
-function calcPA(g)          { return g * TAX_CONFIG.paRate; }
-function calcEIT(g)         { return g * TAX_CONFIG.localEitRate; }
-function calcLST(annualFraction) { return TAX_CONFIG.lstAnnual * annualFraction; } // fraction of year passed
 
-// ---------- Storage layer ----------
 const SKEY = "hammbone_finance_v1";
 const defaultState = () => ({
   setup: false,
   name: "",
   passcodeHash: "",
+  sources: [],
   paychecks: [],
-  taxes: [],       // { date, federal, ss, medicare, pa, eit, lst, other }
-  bills: [],       // { id, name, monthly }
-  vaultDeposits: [], // { date, amount }
-  savings: [],     // { id, name, category, balance, goal, history: [{date,type,amount}] }
+  taxes: [],
+  bills: [],
+  vaultDeposits: [],
+  savings: [],
   created: new Date().toISOString(),
 });
 let state = null;
@@ -951,37 +860,62 @@ function loadState() {
   try {
     const raw = localStorage.getItem(SKEY);
     state = raw ? JSON.parse(raw) : defaultState();
-  } catch (e) { state = defaultState(); }
+  } catch { state = defaultState(); }
+  migrate();
 }
 function saveState() { localStorage.setItem(SKEY, JSON.stringify(state)); }
 
-// Tiny hash (not cryptographic — just obscures the passcode on disk)
+function migrate() {
+  if (!state.sources) state.sources = [];
+  if (state.paychecks && state.paychecks.length && state.paychecks.some(p => !p.sourceId)) {
+    let def = state.sources.find(s => s.name === "Main Job" && s.type === "w2");
+    if (!def) {
+      def = { id: uid(), name: "Main Job", type: "w2", frequency: "biweekly" };
+      state.sources.unshift(def);
+    }
+    state.paychecks.forEach(p => { if (!p.sourceId) p.sourceId = def.id; });
+    saveState();
+  }
+}
+
 function tinyHash(s) {
   let h = 5381;
   for (let i = 0; i < s.length; i++) h = (h * 33) ^ s.charCodeAt(i);
   return (h >>> 0).toString(16);
 }
 
-// ---------- Helpers ----------
 const fmt = n => "$" + (n || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmt0 = n => "$" + Math.round(n || 0).toLocaleString("en-US");
 const todayStr = () => new Date().toISOString().slice(0, 10);
 const uid = () => Math.random().toString(36).slice(2, 10);
 
-function yearStart()        { return new Date(new Date().getFullYear(), 0, 1); }
-function yearEnd()          { return new Date(new Date().getFullYear(), 11, 31, 23, 59, 59); }
-function daysInYear(year)   { return ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) ? 366 : 365; }
-function fractionOfYearElapsed() {
+function yearStart() { return new Date(new Date().getFullYear(), 0, 1); }
+function daysInYear(y) { return ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0) ? 366 : 365; }
+function fracYearElapsed() {
   const now = new Date();
-  const start = yearStart();
   const total = daysInYear(now.getFullYear()) * 86400 * 1000;
-  return (now - start) / total;
+  return Math.min(1, Math.max(0, (now - yearStart()) / total));
 }
 
-// ---------- YTD / projections ----------
-function ytdGrossIncome() { return state.paychecks.reduce((s, p) => s + (+p.amount || 0), 0); }
+function ytdBySource() {
+  const by = {};
+  state.sources.forEach(s => by[s.id] = 0);
+  state.paychecks.forEach(p => { if (by[p.sourceId] === undefined) by[p.sourceId] = 0; by[p.sourceId] += (+p.amount || 0); });
+  return by;
+}
+function ytdByType() {
+  const by = { w2: 0, contractor: 0, capital_gains: 0, interest: 0 };
+  const srcType = {};
+  state.sources.forEach(s => srcType[s.id] = s.type);
+  state.paychecks.forEach(p => {
+    const t = srcType[p.sourceId] || "w2";
+    by[t] = (by[t] || 0) + (+p.amount || 0);
+  });
+  return by;
+}
+function ytdGross() { return state.paychecks.reduce((s, p) => s + (+p.amount || 0), 0); }
 function ytdTaxesPaid() {
-  return state.taxes.reduce((s, t) => s + (+t.federal||0) + (+t.ss||0) + (+t.medicare||0) + (+t.pa||0) + (+t.eit||0) + (+t.lst||0) + (+t.other||0), 0);
+  return state.taxes.reduce((s, t) =>
+    s + (+t.federal||0) + (+t.ss||0) + (+t.medicare||0) + (+t.pa||0) + (+t.eit||0) + (+t.lst||0) + (+t.other||0), 0);
 }
 function ytdTaxesByCategory() {
   const tot = { federal:0, ss:0, medicare:0, pa:0, eit:0, lst:0, other:0 };
@@ -996,88 +930,148 @@ function ytdTaxesByCategory() {
   });
   return tot;
 }
-function projectedAnnualIncome() {
-  // If at least 2 paychecks, average × 26; else extrapolate YTD by fraction of year
-  if (state.paychecks.length >= 2) {
-    const avg = ytdGrossIncome() / state.paychecks.length;
-    return avg * TAX_CONFIG.payPeriodsPerYear;
-  } else if (state.paychecks.length === 1) {
-    return (+state.paychecks[0].amount) * TAX_CONFIG.payPeriodsPerYear;
+
+function expectedTaxOnYTD() {
+  const inc = ytdByType();
+  const ordinary = inc.w2 + inc.contractor + inc.capital_gains + inc.interest;
+  const taxable = Math.max(0, ordinary - TAX_CONFIG.federalStandardDeduction);
+  const federal = calcFederalTax(taxable);
+
+  // FICA only on W-2 wages
+  const ss = Math.min(inc.w2, TAX_CONFIG.ssWageBase) * TAX_CONFIG.ssRate;
+  let medicare = inc.w2 * TAX_CONFIG.medicareRate;
+  if (inc.w2 > TAX_CONFIG.medicareAddlThreshold) {
+    medicare += (inc.w2 - TAX_CONFIG.medicareAddlThreshold) * TAX_CONFIG.medicareAddlRate;
   }
-  return 0;
-}
-function projectedAnnualTaxByCategory(annualGross) {
-  return {
-    federal: calcFederal(annualGross),
-    ss: calcSS(annualGross),
-    medicare: calcMedicare(annualGross),
-    pa: calcPA(annualGross),
-    eit: calcEIT(annualGross),
-    lst: TAX_CONFIG.lstAnnual,
-  };
-}
-function projectedAnnualTaxTotal(annualGross) {
-  const c = projectedAnnualTaxByCategory(annualGross);
-  return c.federal + c.ss + c.medicare + c.pa + c.eit + c.lst;
-}
-function expectedTaxPaidSoFar(annualGross) {
-  // Prorate annual liability by share of paychecks already received
-  const logged = state.paychecks.length;
-  if (logged === 0) return { total:0, byCat:{federal:0,ss:0,medicare:0,pa:0,eit:0,lst:0} };
-  const frac = Math.min(logged / TAX_CONFIG.payPeriodsPerYear, 1);
-  const annualCat = projectedAnnualTaxByCategory(annualGross);
-  const byCat = {};
-  for (const k in annualCat) byCat[k] = annualCat[k] * frac;
-  const total = Object.values(byCat).reduce((a,b)=>a+b, 0);
-  return { total, byCat };
+
+  // Self-employment tax on 1099 income
+  const seBase = inc.contractor * TAX_CONFIG.seTaxableFraction;
+  const seSSCapRoom = Math.max(0, TAX_CONFIG.ssWageBase - inc.w2);
+  const seSSPortion = Math.min(seBase, seSSCapRoom) * 0.124;
+  const seMedPortion = seBase * 0.029;
+  const seTax = seSSPortion + seMedPortion;
+
+  // PA: on all 4 types
+  const pa = ordinary * TAX_CONFIG.paRate;
+
+  // Local EIT: only on earned income (W-2 + 1099)
+  const eit = (inc.w2 + inc.contractor) * TAX_CONFIG.localEitRate;
+
+  // LST: prorated by year elapsed if there's a W-2 source
+  const hasW2 = state.sources.some(s => s.type === "w2");
+  const lst = hasW2 ? TAX_CONFIG.lstAnnual * fracYearElapsed() : 0;
+
+  const total = federal + ss + medicare + seTax + pa + eit + lst;
+  return { total, federal, ss, medicare, seTax, pa, eit, lst, taxable, ordinary, marginal: marginalFederalRate(taxable) };
 }
 
-// ---------- Rendering ----------
 function renderAll() {
   document.getElementById("subTitle").textContent =
-    (state.name ? `Welcome back, ${state.name} 💖 ` : "") + `· ${new Date().getFullYear()}`;
+    (state.name ? "Welcome back, " + state.name + " \u00B7 " : "") + new Date().getFullYear();
   renderIncome();
   renderTaxes();
   renderBills();
   renderSavings();
   renderHealth();
-  renderNameSettings();
+  document.getElementById("nameDisplay").textContent = state.name || "--";
 }
 
-function renderNameSettings() {
-  document.getElementById("nameDisplay").textContent = state.name || "—";
-}
-
-// ----- Income tab -----
 function renderIncome() {
-  const ytd = ytdGrossIncome();
-  document.getElementById("ytdGross").textContent = fmt(ytd);
+  const byType = ytdByType();
+  document.getElementById("ytdGross").textContent = fmt(ytdGross());
   document.getElementById("checksCount").textContent = state.paychecks.length;
-  document.getElementById("avgCheck").textContent = fmt(state.paychecks.length ? ytd / state.paychecks.length : 0);
-  document.getElementById("projAnnual").textContent = fmt(projectedAnnualIncome());
+  document.getElementById("ytdEarned").textContent = fmt(byType.w2 + byType.contractor);
+  document.getElementById("ytdInvestment").textContent = fmt(byType.capital_gains + byType.interest);
+
+  const bySrc = ytdBySource();
+  const srcList = document.getElementById("sourceList");
+  if (!state.sources.length) {
+    srcList.innerHTML = '<div class="muted">No sources yet. Create one above.</div>';
+  } else {
+    srcList.innerHTML = state.sources.map(s => {
+      const fLabel = FREQ_LABELS[s.frequency] || s.frequency;
+      const tShort = INCOME_TYPES[s.type] ? INCOME_TYPES[s.type].short : "";
+      return '<div class="source-card">' +
+        '<div class="row-top">' +
+          '<div>' +
+            '<div class="title">' + escapeHtml(s.name) + ' <span class="tag ' + s.type + '">' + tShort + '</span></div>' +
+            '<div class="meta">' + fLabel + '</div>' +
+          '</div>' +
+          '<div style="text-align:right">' +
+            '<div class="ytd">' + fmt(bySrc[s.id] || 0) + '</div>' +
+            '<button class="x" onclick="deleteSource(\'' + s.id + '\')">x</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join("");
+  }
+
+  const sel = document.getElementById("paySource");
+  const noMsg = document.getElementById("noSourceMsg");
+  const form = document.getElementById("payForm");
+  if (!state.sources.length) {
+    form.style.display = "none";
+    noMsg.style.display = "block";
+  } else {
+    form.style.display = "block";
+    noMsg.style.display = "none";
+    sel.innerHTML = state.sources.map(s => {
+      const sh = INCOME_TYPES[s.type] ? INCOME_TYPES[s.type].short : "";
+      return '<option value="' + s.id + '">' + escapeHtml(s.name) + ' \u00B7 ' + sh + '</option>';
+    }).join("");
+  }
 
   const list = document.getElementById("paycheckList");
+  const srcById = {};
+  state.sources.forEach(s => srcById[s.id] = s);
   if (!state.paychecks.length) {
-    list.innerHTML = `<div class="muted">No paychecks yet. Add your first above.</div>`;
+    list.innerHTML = '<div class="muted">No paychecks yet. Add your first above.</div>';
     return;
   }
   list.innerHTML = [...state.paychecks]
     .sort((a, b) => b.date.localeCompare(a.date))
-    .map(p => `
-      <div class="list-item">
-        <div class="info">
-          <div class="title">${fmt(p.amount)}</div>
-          <div class="sub">${formatDate(p.date)}</div>
-        </div>
-        <button class="x" onclick="deletePaycheck('${p.id}')">✕</button>
-      </div>`).join("");
+    .map(p => {
+      const s = srcById[p.sourceId];
+      const srcName = s ? s.name : "(deleted source)";
+      const srcShort = s && INCOME_TYPES[s.type] ? INCOME_TYPES[s.type].short : "";
+      return '<div class="list-item">' +
+        '<div class="info">' +
+          '<div class="title">' + fmt(p.amount) + '</div>' +
+          '<div class="sub">' + formatDate(p.date) + ' \u00B7 ' + escapeHtml(srcName) + (srcShort ? ' \u00B7 ' + srcShort : '') + '</div>' +
+        '</div>' +
+        '<button class="x" onclick="deletePaycheck(\'' + p.id + '\')">x</button>' +
+      '</div>';
+    }).join("");
+}
+
+function addSource() {
+  const name = document.getElementById("srcName").value.trim();
+  if (!name) { alert("Give the source a name"); return; }
+  const type = document.getElementById("srcType").value;
+  const frequency = document.getElementById("srcFreq").value;
+  state.sources.push({ id: uid(), name, type, frequency });
+  saveState();
+  document.getElementById("srcName").value = "";
+  renderAll();
+}
+function deleteSource(id) {
+  const hasChecks = state.paychecks.some(p => p.sourceId === id);
+  const msg = hasChecks
+    ? "Delete this source? All paychecks logged under it will also be removed."
+    : "Delete this source?";
+  if (!confirm(msg)) return;
+  state.sources = state.sources.filter(s => s.id !== id);
+  state.paychecks = state.paychecks.filter(p => p.sourceId !== id);
+  saveState(); renderAll();
 }
 
 function addPaycheck() {
+  if (!state.sources.length) return alert("Create an income source first");
+  const sourceId = document.getElementById("paySource").value;
   const date = document.getElementById("payDate").value || todayStr();
   const amount = parseFloat(document.getElementById("payAmount").value);
   if (!(amount > 0)) return alert("Enter a paycheck amount");
-  state.paychecks.push({ id: uid(), date, amount });
+  state.paychecks.push({ id: uid(), date, amount, sourceId });
   saveState();
   document.getElementById("payAmount").value = "";
   renderAll();
@@ -1085,80 +1079,67 @@ function addPaycheck() {
 function deletePaycheck(id) {
   if (!confirm("Delete this paycheck?")) return;
   state.paychecks = state.paychecks.filter(p => p.id !== id);
-  saveState();
-  renderAll();
+  saveState(); renderAll();
 }
 
-// ----- Taxes tab -----
 function renderTaxes() {
-  const ytdIncome = ytdGrossIncome();
-  const projected = projectedAnnualIncome();
   const paid = ytdTaxesByCategory();
   const totalPaid = ytdTaxesPaid();
-  const annualLiability = projectedAnnualTaxTotal(projected);
-  const expected = expectedTaxPaidSoFar(projected);
-  const effectiveRate = projected > 0 ? (annualLiability / projected) * 100 : 0;
-  const delta = totalPaid - expected.total;
+  const ytd = ytdGross();
+  const exp = expectedTaxOnYTD();
+  const effRate = ytd > 0 ? (exp.total / ytd) * 100 : 0;
 
   document.getElementById("taxesPaidYtd").textContent = fmt(totalPaid);
-  document.getElementById("projTaxLiability").textContent = fmt(annualLiability);
-  document.getElementById("expectedPaid").textContent = fmt(expected.total);
-  document.getElementById("effectiveRate").textContent = effectiveRate.toFixed(1) + "%";
+  document.getElementById("expectedPaid").textContent = fmt(exp.total);
+  document.getElementById("effectiveRate").textContent = effRate.toFixed(1) + "%";
+  document.getElementById("marginalRate").textContent = (exp.marginal * 100).toFixed(0) + "%";
 
+  const delta = totalPaid - exp.total;
   const dEl = document.getElementById("taxDelta");
   const dMsg = document.getElementById("taxDeltaMsg");
   if (state.paychecks.length === 0) {
-    dEl.textContent = fmt(0);
-    dEl.className = "value";
+    dEl.textContent = fmt(0); dEl.className = "value";
     dMsg.textContent = "Log a paycheck to get started.";
   } else if (delta >= 0) {
-    dEl.textContent = "+" + fmt(delta);
-    dEl.className = "value pos";
-    dMsg.textContent = "You're ahead on withholding — nice cushion 💖";
+    dEl.textContent = "+" + fmt(delta); dEl.className = "value pos";
+    dMsg.textContent = "You're ahead on withholding -- nice cushion.";
   } else {
-    dEl.textContent = "-" + fmt(Math.abs(delta));
-    dEl.className = "value neg";
+    dEl.textContent = "-" + fmt(Math.abs(delta)); dEl.className = "value neg";
     dMsg.textContent = "You're under-withholding. Consider extra payment or W-4 update.";
   }
 
-  // Grid
-  const annualCat = projectedAnnualTaxByCategory(projected);
-  const frac = Math.min(state.paychecks.length / TAX_CONFIG.payPeriodsPerYear, 1);
   const rows = [
-    ["Federal", paid.federal, annualCat.federal * frac],
-    ["Social Security", paid.ss, annualCat.ss * frac],
-    ["Medicare", paid.medicare, annualCat.medicare * frac],
-    ["PA State (3.07%)", paid.pa, annualCat.pa * frac],
-    ["Local EIT (1%)", paid.eit, annualCat.eit * frac],
-    ["LST ($52/yr)", paid.lst, TAX_CONFIG.lstAnnual * frac],
-    ["Other", paid.other, 0],
+    ["Federal",           paid.federal,  exp.federal],
+    ["Social Security",   paid.ss,       exp.ss],
+    ["Medicare",          paid.medicare, exp.medicare],
   ];
-  document.querySelector("#taxGrid tbody").innerHTML = rows.map(([name, p, e]) => {
+  if (exp.seTax > 0) rows.push(["Self-Employment Tax", 0, exp.seTax]);
+  rows.push(["PA State (3.07%)",     paid.pa,    exp.pa]);
+  rows.push(["Local EIT (1%)",       paid.eit,   exp.eit]);
+  rows.push(["LST",                  paid.lst,   exp.lst]);
+  rows.push(["Other",                paid.other, 0]);
+
+  document.querySelector("#taxGrid tbody").innerHTML = rows.map(r => {
+    const name = r[0], p = r[1], e = r[2];
     const d = p - e;
-    const cls = d >= 0 ? "pos" : "neg";
-    return `<tr>
-      <td>${name}</td>
-      <td>${fmt(p)}</td>
-      <td>${fmt(e)}</td>
-      <td class="${cls}" style="color: ${d>=0?'var(--green)':'var(--red)'}">${d>=0?"+":""}${fmt(d)}</td>
-    </tr>`;
+    return '<tr><td>' + name + '</td><td>' + fmt(p) + '</td><td>' + fmt(e) + '</td><td style="color: ' + (d>=0?'var(--green)':'var(--red)') + '">' + (d>=0?"+":"") + fmt(d) + '</td></tr>';
   }).join("");
 
   const tList = document.getElementById("taxList");
   if (!state.taxes.length) {
-    tList.innerHTML = `<div class="muted">No tax entries yet.</div>`;
+    tList.innerHTML = '<div class="muted">No tax entries yet.</div>';
   } else {
     tList.innerHTML = [...state.taxes]
       .sort((a, b) => b.date.localeCompare(a.date))
       .map(t => {
         const total = (+t.federal||0)+(+t.ss||0)+(+t.medicare||0)+(+t.pa||0)+(+t.eit||0)+(+t.lst||0)+(+t.other||0);
-        return `<div class="list-item">
-          <div class="info">
-            <div class="title">${fmt(total)}</div>
-            <div class="sub">${formatDate(t.date)} · F ${fmt(t.federal||0)} · SS ${fmt(t.ss||0)} · Med ${fmt(t.medicare||0)} · PA ${fmt(t.pa||0)} · EIT ${fmt(t.eit||0)} · LST ${fmt(t.lst||0)}</div>
-          </div>
-          <button class="x" onclick="deleteTax('${t.id}')">✕</button>
-        </div>`;
+        return '<div class="list-item">' +
+          '<div class="info">' +
+            '<div class="title">' + fmt(total) + '</div>' +
+            '<div class="sub">' + formatDate(t.date) + ' \u00B7 F ' + fmt(t.federal||0) + ' \u00B7 SS ' + fmt(t.ss||0) + ' \u00B7 Med ' + fmt(t.medicare||0) + ' \u00B7 PA ' + fmt(t.pa||0) + '</div>' +
+          '</div>' +
+          '<button class="x" onclick="deleteTax(\'' + t.id + '\')">x</button>' +
+        '</div>';
       }).join("");
   }
 }
@@ -1184,21 +1165,20 @@ function addTaxEntry() {
 function deleteTax(id) {
   if (!confirm("Delete this tax entry?")) return;
   state.taxes = state.taxes.filter(t => t.id !== id);
-  saveState();
-  renderAll();
+  saveState(); renderAll();
 }
 
-// ----- Bills tab -----
 let billView = "monthly";
 function renderBills() {
-  const ytdIncome = ytdGrossIncome();
   const totalTaxes = ytdTaxesPaid();
-  const ytdNet = ytdIncome - totalTaxes;
-  const paychecksLogged = state.paychecks.length || 1;
-  const avgPayNet = state.paychecks.length > 0 ? ytdNet / state.paychecks.length : 0;
+  const ytdNet = ytdGross() - totalTaxes;
 
-  const weeklyNet = avgPayNet / 2;              // biweekly split → per week
-  const monthlyNet = avgPayNet * (26 / 12);     // biweekly → monthly
+  const now = new Date();
+  const monthsElapsed = Math.max(1, (now - yearStart()) / (30.4375 * 86400 * 1000));
+  const weeksElapsed = Math.max(1, (now - yearStart()) / (7 * 86400 * 1000));
+
+  const monthlyNet = ytdNet / monthsElapsed;
+  const weeklyNet = ytdNet / weeksElapsed;
 
   const monthlyBills = state.bills.reduce((s, b) => s + (+b.monthly || 0), 0);
   const weeklyBills = monthlyBills * (12 / 52);
@@ -1214,8 +1194,6 @@ function renderBills() {
   document.getElementById("leftOver").textContent = fmt(left);
   document.getElementById("leftOver").className = "value " + (left >= 0 ? "pos" : "neg");
 
-  // Vault balance (this month) — this month's deposits minus monthly bill total
-  const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
   const monthVault = state.vaultDeposits.filter(v => v.date >= startOfMonth).reduce((s,v) => s + (+v.amount||0), 0);
   document.getElementById("vaultBalance").textContent = fmt(monthVault);
@@ -1224,57 +1202,50 @@ function renderBills() {
   const vEl = document.getElementById("vaultDelta");
   const vMsg = document.getElementById("vaultMsg");
   if (monthlyBills === 0) {
-    vEl.textContent = fmt(0);
-    vEl.className = "value";
+    vEl.textContent = fmt(0); vEl.className = "value";
     vMsg.textContent = "Add your bills to see the comparison.";
   } else if (vaultDelta >= 0) {
-    vEl.textContent = "+" + fmt(vaultDelta);
-    vEl.className = "value pos";
-    vMsg.textContent = "Vault covers all bills — surplus this month 🌸";
+    vEl.textContent = "+" + fmt(vaultDelta); vEl.className = "value pos";
+    vMsg.textContent = "Vault covers all bills -- surplus this month.";
   } else {
-    vEl.textContent = "-" + fmt(Math.abs(vaultDelta));
-    vEl.className = "value neg";
+    vEl.textContent = "-" + fmt(Math.abs(vaultDelta)); vEl.className = "value neg";
     vMsg.textContent = "Need " + fmt(Math.abs(vaultDelta)) + " more in vault to cover bills.";
   }
 
-  // Vault list
   const vList = document.getElementById("vaultList");
   if (!state.vaultDeposits.length) {
-    vList.innerHTML = `<div class="muted">No deposits yet.</div>`;
+    vList.innerHTML = '<div class="muted">No deposits yet.</div>';
   } else {
     vList.innerHTML = [...state.vaultDeposits]
       .sort((a, b) => b.date.localeCompare(a.date))
       .slice(0, 30)
-      .map(v => `<div class="list-item">
-        <div class="info"><div class="title">${fmt(v.amount)}</div><div class="sub">${formatDate(v.date)}</div></div>
-        <button class="x" onclick="deleteVault('${v.id}')">✕</button>
-      </div>`).join("");
+      .map(v => '<div class="list-item">' +
+        '<div class="info"><div class="title">' + fmt(v.amount) + '</div><div class="sub">' + formatDate(v.date) + '</div></div>' +
+        '<button class="x" onclick="deleteVault(\'' + v.id + '\')">x</button>' +
+      '</div>').join("");
   }
 
-  // Bills breakdown with bi-weekly coverage ratio
   const list = document.getElementById("billsList");
   if (!state.bills.length) {
-    list.innerHTML = `<div class="muted">No bills yet. Add one above.</div>`;
+    list.innerHTML = '<div class="muted">No bills yet. Add one above.</div>';
     return;
   }
-  // Two paychecks/month on avg → each covers half of monthly bills if deposited equally
-  // "Coverage ratio" = what % of this bill the current vault balance covers
   list.innerHTML = state.bills.map(b => {
-    const coverage = b.monthly > 0 ? Math.min(1, monthVault / monthlyBills) : 1; // proportional across all bills
+    const coverage = b.monthly > 0 && monthlyBills > 0 ? Math.min(1, monthVault / monthlyBills) : 1;
     const covered = b.monthly * coverage;
     const needed = b.monthly - covered;
     const pct = Math.round(coverage * 100);
-    return `<div class="list-item" style="flex-direction:column; align-items:stretch; gap:6px">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-        <div class="info">
-          <div class="title">${b.name}</div>
-          <div class="sub">Monthly: ${fmt(b.monthly)} · Covered so far: ${fmt(covered)} · Still needed: ${fmt(needed)}</div>
-        </div>
-        <button class="x" onclick="deleteBill('${b.id}')">✕</button>
-      </div>
-      <div class="progress"><div style="width:${pct}%"></div></div>
-      <div class="muted" style="font-size:11px">${pct}% covered by vault</div>
-    </div>`;
+    return '<div class="list-item" style="flex-direction:column; align-items:stretch; gap:6px">' +
+      '<div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">' +
+        '<div class="info">' +
+          '<div class="title">' + escapeHtml(b.name) + '</div>' +
+          '<div class="sub">Monthly: ' + fmt(b.monthly) + ' \u00B7 Covered: ' + fmt(covered) + ' \u00B7 Still needed: ' + fmt(needed) + '</div>' +
+        '</div>' +
+        '<button class="x" onclick="deleteBill(\'' + b.id + '\')">x</button>' +
+      '</div>' +
+      '<div class="progress"><div style="width:' + pct + '%"></div></div>' +
+      '<div class="muted" style="font-size:11px">' + pct + '% covered by vault</div>' +
+    '</div>';
   }).join("");
 }
 function addBill() {
@@ -1290,8 +1261,7 @@ function addBill() {
 function deleteBill(id) {
   if (!confirm("Delete this bill?")) return;
   state.bills = state.bills.filter(b => b.id !== id);
-  saveState();
-  renderAll();
+  saveState(); renderAll();
 }
 function addVault() {
   const date = document.getElementById("vaultDate").value || todayStr();
@@ -1305,11 +1275,9 @@ function addVault() {
 function deleteVault(id) {
   if (!confirm("Delete this vault deposit?")) return;
   state.vaultDeposits = state.vaultDeposits.filter(v => v.id !== id);
-  saveState();
-  renderAll();
+  saveState(); renderAll();
 }
 
-// ----- Savings tab -----
 function renderSavings() {
   const total = state.savings.reduce((s, v) => s + (+v.balance || 0), 0);
   document.getElementById("totalSaved").textContent = fmt(total);
@@ -1317,25 +1285,25 @@ function renderSavings() {
 
   const list = document.getElementById("savingsList");
   if (!state.savings.length) {
-    list.innerHTML = `<div class="muted">No vaults yet. Create one above to track a savings category.</div>`;
+    list.innerHTML = '<div class="muted">No vaults yet. Create one above to track a savings category.</div>';
     return;
   }
   list.innerHTML = state.savings.map(v => {
     const goalPct = v.goal > 0 ? Math.min(100, Math.round((v.balance / v.goal) * 100)) : 0;
-    return `<div class="list-item" style="flex-direction:column; align-items:stretch; gap:6px">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div class="info">
-          <div class="title">${v.name} <span class="tag neutral">${v.category}</span></div>
-          <div class="sub">${fmt(v.balance)}${v.goal > 0 ? ` / ${fmt(v.goal)} goal` : ""}</div>
-        </div>
-        <button class="x" onclick="deleteSavings('${v.id}')">✕</button>
-      </div>
-      ${v.goal > 0 ? `<div class="progress"><div style="width:${goalPct}%"></div></div><div class="muted" style="font-size:11px">${goalPct}% of goal</div>` : ""}
-      <div style="display:flex; gap:6px">
-        <button class="btn small secondary" onclick="changeSavings('${v.id}', 'deposit')">+ Deposit</button>
-        <button class="btn small secondary" onclick="changeSavings('${v.id}', 'withdraw')">− Withdraw</button>
-      </div>
-    </div>`;
+    return '<div class="list-item" style="flex-direction:column; align-items:stretch; gap:6px">' +
+      '<div style="display:flex; justify-content:space-between; align-items:center;">' +
+        '<div class="info">' +
+          '<div class="title">' + escapeHtml(v.name) + ' <span class="tag neutral">' + escapeHtml(v.category) + '</span></div>' +
+          '<div class="sub">' + fmt(v.balance) + (v.goal > 0 ? ' / ' + fmt(v.goal) + ' goal' : '') + '</div>' +
+        '</div>' +
+        '<button class="x" onclick="deleteSavings(\'' + v.id + '\')">x</button>' +
+      '</div>' +
+      (v.goal > 0 ? '<div class="progress"><div style="width:' + goalPct + '%"></div></div><div class="muted" style="font-size:11px">' + goalPct + '% of goal</div>' : '') +
+      '<div style="display:flex; gap:6px">' +
+        '<button class="btn small secondary" onclick="changeSavings(\'' + v.id + '\', \'deposit\')">+ Deposit</button>' +
+        '<button class="btn small secondary" onclick="changeSavings(\'' + v.id + '\', \'withdraw\')">- Withdraw</button>' +
+      '</div>' +
+    '</div>';
   }).join("");
 }
 function addSavingsVault() {
@@ -1354,38 +1322,42 @@ function addSavingsVault() {
 function changeSavings(id, kind) {
   const v = state.savings.find(x => x.id === id);
   if (!v) return;
-  const amt = parseFloat(prompt(`${kind === "deposit" ? "Deposit" : "Withdraw"} amount:`));
+  const amt = parseFloat(prompt((kind === "deposit" ? "Deposit" : "Withdraw") + " amount:"));
   if (!(amt > 0)) return;
   v.balance += kind === "deposit" ? amt : -amt;
   if (v.balance < 0) v.balance = 0;
   v.history = v.history || [];
   v.history.push({ date: todayStr(), type: kind, amount: amt });
-  saveState();
-  renderAll();
+  saveState(); renderAll();
 }
 function deleteSavings(id) {
   if (!confirm("Delete this vault?")) return;
   state.savings = state.savings.filter(v => v.id !== id);
-  saveState();
-  renderAll();
+  saveState(); renderAll();
 }
 
-// ----- Health score -----
 function calcHealth() {
-  // Income consistency — # paychecks this year vs expected so far
   const now = new Date();
-  const weeksElapsed = Math.max(1, Math.floor((now - yearStart()) / (7 * 86400 * 1000)));
-  const expectedChecks = Math.max(1, Math.floor(weeksElapsed / 2));
-  const incomeScore = Math.min(1, state.paychecks.length / expectedChecks) * 20;
+  const frac = fracYearElapsed();
 
-  // Tax discipline
-  const projected = projectedAnnualIncome();
-  const exp = expectedTaxPaidSoFar(projected).total;
+  let expectedChecks = 0;
+  let loggedPerSource = 0;
+  state.sources.forEach(s => {
+    const perYear = FREQ_PER_YEAR[s.frequency] || 0;
+    if (perYear > 0) expectedChecks += Math.max(1, Math.round(perYear * frac));
+    loggedPerSource += state.paychecks.filter(p => p.sourceId === s.id).length;
+  });
+  let incomeScore;
+  if (state.sources.length === 0) incomeScore = 0;
+  else if (expectedChecks === 0) incomeScore = state.paychecks.length > 0 ? 15 : 0;
+  else incomeScore = Math.min(1, loggedPerSource / expectedChecks) * 20;
+
+  const exp = expectedTaxOnYTD();
   const paid = ytdTaxesPaid();
   let taxScore;
-  if (exp === 0) taxScore = 10; // neutral until data
+  if (exp.total === 0) taxScore = 10;
   else {
-    const ratio = paid / exp; // 1 = perfect
+    const ratio = paid / exp.total;
     if (ratio >= 0.98 && ratio <= 1.05) taxScore = 20;
     else if (ratio >= 0.90 && ratio <= 1.10) taxScore = 17;
     else if (ratio >= 0.80 && ratio <= 1.20) taxScore = 12;
@@ -1393,23 +1365,17 @@ function calcHealth() {
     else taxScore = 3;
   }
 
-  // Bills coverage
-  const ytdIncome = ytdGrossIncome();
-  const ytdNet = ytdIncome - paid;
-  const avgPayNet = state.paychecks.length ? ytdNet / state.paychecks.length : 0;
-  const monthlyNet = avgPayNet * (26 / 12);
   const monthlyBills = state.bills.reduce((s, b) => s + (+b.monthly || 0), 0);
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
   const monthVault = state.vaultDeposits.filter(v => v.date >= startOfMonth).reduce((s,v)=>s+(+v.amount||0),0);
+  let billsScore;
+  if (state.bills.length === 0) billsScore = 0;
+  else if (monthlyBills === 0) billsScore = 12.5;
+  else billsScore = Math.min(1, monthVault / monthlyBills) * 25;
 
-  let billsScore = 12.5;
-  if (monthlyBills > 0) {
-    billsScore = Math.min(1, monthVault / monthlyBills) * 25;
-  } else if (state.bills.length === 0) {
-    billsScore = 0; // encourage adding bills
-  }
-
-  // Surplus rate (take-home left after bills)
+  const ytdNet = ytdGross() - paid;
+  const monthsElapsed = Math.max(1, (now - yearStart()) / (30.4375 * 86400 * 1000));
+  const monthlyNet = ytdNet / monthsElapsed;
   let surplusScore;
   if (monthlyNet <= 0) surplusScore = 0;
   else {
@@ -1421,7 +1387,6 @@ function calcHealth() {
     else surplusScore = 0;
   }
 
-  // Savings cushion (3-month rule)
   const totalSaved = state.savings.reduce((s, v) => s + (+v.balance || 0), 0);
   let savingsScore;
   if (monthlyBills === 0) savingsScore = totalSaved > 0 ? 10 : 0;
@@ -1438,56 +1403,55 @@ function calcHealth() {
   return {
     total: Math.min(100, total),
     breakdown: [
-      { label: "Income consistency",  points: incomeScore,  max: 20, detail: `${state.paychecks.length} / ${expectedChecks} expected paychecks` },
-      { label: "Tax discipline",      points: taxScore,     max: 20, detail: exp ? `${((paid/exp)*100).toFixed(0)}% of expected withheld` : "Need data" },
-      { label: "Bills coverage",      points: billsScore,   max: 25, detail: monthlyBills ? `${Math.round(Math.min(1,monthVault/monthlyBills)*100)}% covered by vault` : "No bills yet" },
-      { label: "Surplus rate",        points: surplusScore, max: 15, detail: monthlyNet ? `${Math.round(((monthlyNet-monthlyBills)/monthlyNet)*100)}% of take-home left` : "Need income" },
-      { label: "Savings cushion",     points: savingsScore, max: 20, detail: monthlyBills ? `${(totalSaved/monthlyBills).toFixed(1)} months covered` : `${fmt(totalSaved)} saved` },
+      { label: "Income consistency",  points: incomeScore,  max: 20, detail: state.sources.length ? (loggedPerSource + " / " + expectedChecks + " expected paychecks") : "No sources yet" },
+      { label: "Tax discipline",      points: taxScore,     max: 20, detail: exp.total ? (Math.round((paid/exp.total)*100) + "% of expected withheld") : "Need data" },
+      { label: "Bills coverage",      points: billsScore,   max: 25, detail: monthlyBills ? (Math.round(Math.min(1,monthVault/monthlyBills)*100) + "% covered by vault") : "No bills yet" },
+      { label: "Surplus rate",        points: surplusScore, max: 15, detail: monthlyNet > 0 ? (Math.round(((monthlyNet-monthlyBills)/monthlyNet)*100) + "% of take-home left") : "Need income" },
+      { label: "Savings cushion",     points: savingsScore, max: 20, detail: monthlyBills ? ((totalSaved/monthlyBills).toFixed(1) + " months covered") : (fmt(totalSaved) + " saved") },
     ],
   };
 }
 function gradeLabel(score) {
-  if (score >= 85) return "Excellent 💎";
-  if (score >= 70) return "Strong 💖";
-  if (score >= 55) return "On track 🌸";
-  if (score >= 40) return "Needs care 🌷";
-  return "Just starting 🌱";
+  if (score >= 85) return "Excellent";
+  if (score >= 70) return "Strong";
+  if (score >= 55) return "On track";
+  if (score >= 40) return "Needs care";
+  return "Just starting";
 }
 function renderHealth() {
   const h = calcHealth();
   document.getElementById("scoreText").textContent = h.total;
   document.getElementById("scoreGrade").textContent = gradeLabel(h.total);
-  // arc length of the half-circle stroke
   const arcLen = 283;
   document.getElementById("gaugeArc").setAttribute("stroke-dashoffset", arcLen - (arcLen * h.total / 100));
 
   document.getElementById("scoreBreakdown").innerHTML = h.breakdown.map(b => {
     const pct = (b.points / b.max) * 100;
-    return `<div style="margin: 10px 0 4px;">
-      <div style="display:flex; justify-content:space-between; font-size:13px;">
-        <b>${b.label}</b>
-        <span>${Math.round(b.points)} / ${b.max}</span>
-      </div>
-      <div class="progress"><div style="width:${pct}%"></div></div>
-      <div class="muted" style="font-size:11px; margin-top:2px">${b.detail}</div>
-    </div>`;
+    return '<div style="margin: 10px 0 4px;">' +
+      '<div style="display:flex; justify-content:space-between; font-size:13px;">' +
+        '<b>' + b.label + '</b>' +
+        '<span>' + Math.round(b.points) + ' / ' + b.max + '</span>' +
+      '</div>' +
+      '<div class="progress"><div style="width:' + pct + '%"></div></div>' +
+      '<div class="muted" style="font-size:11px; margin-top:2px">' + b.detail + '</div>' +
+    '</div>';
   }).join("");
 }
 
-// ---------- Utilities ----------
 function formatDate(iso) {
   if (!iso) return "";
   const d = new Date(iso + "T00:00:00");
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
 
-// ---------- Tabs ----------
 function selectTab(name) {
   document.querySelectorAll(".tab-content").forEach(el => el.classList.toggle("active", el.id === "tab-" + name));
   document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
 }
 
-// ---------- Settings actions ----------
 function changeName() {
   const n = prompt("Your name:", state.name || "");
   if (n !== null) { state.name = n.trim(); saveState(); renderAll(); }
@@ -1497,33 +1461,29 @@ function changePasscode() {
   if (!p || !/^\d{4}$/.test(p)) return alert("Must be exactly 4 digits");
   state.passcodeHash = tinyHash(p);
   saveState();
-  alert("Passcode updated 💖");
+  alert("Passcode updated");
 }
 function exportData() {
   const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
-  a.href = url;
-  a.download = `hammbone-finance-${todayStr()}.json`;
+  a.href = url; a.download = "hammbone-finance-" + todayStr() + ".json";
   a.click();
   URL.revokeObjectURL(url);
 }
 function importData() {
   const inp = document.createElement("input");
-  inp.type = "file";
-  inp.accept = "application/json";
+  inp.type = "file"; inp.accept = "application/json";
   inp.onchange = () => {
-    const f = inp.files[0];
-    if (!f) return;
+    const f = inp.files[0]; if (!f) return;
     const r = new FileReader();
     r.onload = () => {
       try {
         const data = JSON.parse(r.result);
         if (!confirm("Replace all current data with the imported file?")) return;
-        state = { ...defaultState(), ...data };
-        saveState();
-        renderAll();
-        alert("Imported 💖");
+        state = Object.assign({}, defaultState(), data);
+        saveState(); migrate(); renderAll();
+        alert("Imported");
       } catch { alert("Invalid file"); }
     };
     r.readAsText(f);
@@ -1532,12 +1492,11 @@ function importData() {
 }
 function resetAll() {
   if (!confirm("Really wipe ALL data on this device? This cannot be undone.")) return;
-  if (!confirm("Last chance — really erase everything?")) return;
+  if (!confirm("Last chance -- really erase everything?")) return;
   localStorage.removeItem(SKEY);
   location.reload();
 }
 
-// ---------- Lock screen ----------
 let lockBuffer = "";
 let isCreating = false;
 let firstPass = "";
@@ -1551,12 +1510,11 @@ function showLock() {
   document.getElementById("lockError").textContent = "";
 
   if (!state.setup || !state.passcodeHash) {
-    isCreating = true;
-    firstPass = "";
+    isCreating = true; firstPass = "";
     document.getElementById("lockPrompt").textContent = "Create a 4-digit passcode";
   } else {
     isCreating = false;
-    document.getElementById("lockPrompt").textContent = `Welcome back${state.name ? ", " + state.name : ""}`;
+    document.getElementById("lockPrompt").textContent = "Welcome back" + (state.name ? ", " + state.name : "");
   }
 }
 function updateDots() {
@@ -1569,15 +1527,12 @@ function onKey(k) {
   if (k === "clear") { lockBuffer = ""; updateDots(); return; }
   if (k === "back")  { lockBuffer = lockBuffer.slice(0, -1); updateDots(); return; }
   if (lockBuffer.length >= 4) return;
-  lockBuffer += k;
-  updateDots();
+  lockBuffer += k; updateDots();
   if (lockBuffer.length === 4) {
     setTimeout(() => {
       if (isCreating) {
         if (!firstPass) {
-          firstPass = lockBuffer;
-          lockBuffer = "";
-          updateDots();
+          firstPass = lockBuffer; lockBuffer = ""; updateDots();
           document.getElementById("lockPrompt").textContent = "Confirm your passcode";
         } else if (firstPass === lockBuffer) {
           state.passcodeHash = tinyHash(lockBuffer);
@@ -1586,23 +1541,15 @@ function onKey(k) {
             const n = prompt("What's your name? (shown on home screen)") || "";
             state.name = n.trim();
           }
-          saveState();
-          enterApp();
+          saveState(); enterApp();
         } else {
-          firstPass = "";
-          lockBuffer = "";
-          updateDots();
-          err.textContent = "Didn't match — start over";
+          firstPass = ""; lockBuffer = ""; updateDots();
+          err.textContent = "Didn't match -- start over";
           document.getElementById("lockPrompt").textContent = "Create a 4-digit passcode";
         }
       } else {
-        if (tinyHash(lockBuffer) === state.passcodeHash) {
-          enterApp();
-        } else {
-          lockBuffer = "";
-          updateDots();
-          err.textContent = "Wrong passcode";
-        }
+        if (tinyHash(lockBuffer) === state.passcodeHash) enterApp();
+        else { lockBuffer = ""; updateDots(); err.textContent = "Wrong passcode"; }
       }
     }, 120);
   }
@@ -1614,11 +1561,9 @@ function enterApp() {
   renderAll();
 }
 
-// ---------- PWA install handling ----------
 let deferredPrompt = null;
 window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
+  e.preventDefault(); deferredPrompt = e;
   document.getElementById("installBanner").style.display = "flex";
 });
 document.getElementById("installBtn")?.addEventListener("click", async () => {
@@ -1629,12 +1574,9 @@ document.getElementById("installBtn")?.addEventListener("click", async () => {
   document.getElementById("installBanner").style.display = "none";
 });
 
-// ---------- Init ----------
 loadState();
-// Default date fields to today
 ["payDate","taxDate","vaultDate"].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.value = todayStr();
+  const el = document.getElementById(id); if (el) el.value = todayStr();
 });
 
 document.getElementById("keypad").addEventListener("click", (e) => {
@@ -1646,8 +1588,7 @@ document.getElementById("tabNav").addEventListener("click", (e) => {
   if (b && b.dataset.tab) selectTab(b.dataset.tab);
 });
 document.getElementById("billToggle").addEventListener("click", (e) => {
-  const b = e.target.closest("button");
-  if (!b) return;
+  const b = e.target.closest("button"); if (!b) return;
   billView = b.dataset.view;
   document.querySelectorAll("#billToggle button").forEach(x => x.classList.toggle("active", x === b));
   renderBills();
@@ -1655,7 +1596,6 @@ document.getElementById("billToggle").addEventListener("click", (e) => {
 
 showLock();
 
-// Register service worker
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("sw.js").catch(() => {});
