@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1" />
+<meta name="theme-color" content="#ec4899" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Hammbone Finance" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<title>Hammbone Finance</title>
+<style>
+  :root {
+    --pink-50: #fdf2f8;
+    --pink-100: #fce7f3;
+    --pink-200: #fbcfe8;
+    --pink-300: #f9a8d4;
+    --pink-400: #f472b6;
+    --pink-500: #ec4899;
+    --pink-600: #db2777;
+    --purple-200: #e9d5ff;
+    --purple-300: #d8b4fe;
+    --purple-400: #c084fc;
+    --purple-500: #a855f7;
+    --purple-600: #9333ea;
+    --rose-400: #fb7185;
+    --text: #3b0a2e;
+    --muted: #8b5a7a;
+    --green: #15803d;
+    --red: #be123c;
+    --card: rgba(255, 255, 255, 0.82);
+    --card-border: rgba(236, 72, 153, 0.25);
+    --shadow: 0 8px 24px rgba(219, 39, 119, 0.15);
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(244, 114, 182, 0.35) 0%, transparent 40%),
+      radial-gradient(circle at 80% 0%, rgba(192, 132, 252, 0.3) 0%, transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(251, 113, 133, 0.25) 0%, transparent 45%),
+      linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #fce7f3 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  /* Floral scattered background */
+  .floral-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><g opacity='0.55'><g transform='translate(40,40)'><circle cx='0' cy='-14' r='10' fill='%23fbcfe8'/><circle cx='13' cy='-4' r='10' fill='%23fbcfe8'/><circle cx='8' cy='12' r='10' fill='%23fbcfe8'/><circle cx='-8' cy='12' r='10' fill='%23fbcfe8'/><circle cx='-13' cy='-4' r='10' fill='%23fbcfe8'/><circle cx='0' cy='0' r='5' fill='%23f472b6'/></g><g transform='translate(160,80)'><circle cx='0' cy='-12' r='8' fill='%23e9d5ff'/><circle cx='11' cy='-3' r='8' fill='%23e9d5ff'/><circle cx='7' cy='10' r='8' fill='%23e9d5ff'/><circle cx='-7' cy='10' r='8' fill='%23e9d5ff'/><circle cx='-11' cy='-3' r='8' fill='%23e9d5ff'/><circle cx='0' cy='0' r='4' fill='%23a855f7'/></g><g transform='translate(90,170)'><circle cx='0' cy='-10' r='7' fill='%23fce7f3'/><circle cx='9' cy='-3' r='7' fill='%23fce7f3'/><circle cx='6' cy='8' r='7' fill='%23fce7f3'/><circle cx='-6' cy='8' r='7' fill='%23fce7f3'/><circle cx='-9' cy='-3' r='7' fill='%23fce7f3'/><circle cx='0' cy='0' r='3' fill='%23ec4899'/></g><g transform='translate(175,180)'><path d='M0,-8 Q4,-4 0,0 Q-4,-4 0,-8 Z' fill='%23d8b4fe' transform='rotate(0)'/><path d='M0,-8 Q4,-4 0,0 Q-4,-4 0,-8 Z' fill='%23d8b4fe' transform='rotate(72)'/><path d='M0,-8 Q4,-4 0,0 Q-4,-4 0,-8 Z' fill='%23d8b4fe' transform='rotate(144)'/><path d='M0,-8 Q4,-4 0,0 Q-4,-4 0,-8 Z' fill='%23d8b4fe' transform='rotate(216)'/><path d='M0,-8 Q4,-4 0,0 Q-4,-4 0,-8 Z' fill='%23d8b4fe' transform='rotate(288)'/></g><g transform='translate(20,140)'><path d='M0,-6 Q3,-3 0,0 Q-3,-3 0,-6 Z' fill='%23f9a8d4' transform='rotate(0)'/><path d='M0,-6 Q3,-3 0,0 Q-3,-3 0,-6 Z' fill='%23f9a8d4' transform='rotate(60)'/><path d='M0,-6 Q3,-3 0,0 Q-3,-3 0,-6 Z' fill='%23f9a8d4' transform='rotate(120)'/><path d='M0,-6 Q3,-3 0,0 Q-3,-3 0,-6 Z' fill='%23f9a8d4' transform='rotate(180)'/><path d='M0,-6 Q3,-3 0,0 Q-3,-3 0,-6 Z' fill='%23f9a8d4' transform='rotate(240)'/><path d='M0,-6 Q3,-3 0,0 Q-3,-3 0,-6 Z' fill='%23f9a8d4' transform='rotate(300)'/></g></g></svg>");
+    background-repeat: repeat;
+    background-size: 220px 220px;
+  }
+
+  .app {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: env(safe-area-inset-top) 0 calc(96px + env(safe-area-inset-bottom)) 0;
+  }
+
+  header {
+    text-align: center;
+    padding: 22px 16px 14px;
+  }
+  header .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--pink-600), var(--purple-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  header .logo svg { flex: 0 0 auto; }
+  header .sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    border-radius: 22px;
+    padding: 18px;
+    margin: 12px 14px;
+    box-shadow: var(--shadow);
+  }
+  .card h2 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: var(--pink-600);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    margin: 16px 0 8px;
+    font-size: 15px;
+    color: var(--purple-600);
+  }
+  .muted { color: var(--muted); font-size: 13px; }
+
+  /* Stat tiles */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .stat {
+    background: linear-gradient(135deg, rgba(252, 231, 243, 0.9), rgba(233, 213, 255, 0.9));
+    border-radius: 16px;
+    padding: 12px 14px;
+    border: 1px solid rgba(236, 72, 153, 0.15);
+  }
+  .stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); font-weight: 600; }
+  .stat .value { font-size: 20px; font-weight: 800; margin-top: 2px; color: var(--text); }
+  .stat .value.pos { color: var(--green); }
+  .stat .value.neg { color: var(--red); }
+
+  /* Inputs */
+  input, select, button {
+    font: inherit;
+    color: inherit;
+  }
+  input[type="text"], input[type="number"], input[type="date"], input[type="password"], select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1.5px solid var(--pink-200);
+    background: rgba(255, 255, 255, 0.9);
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  input:focus, select:focus {
+    border-color: var(--pink-400);
+    box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.2);
+  }
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin: 10px 0 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .row3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 18px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+    width: 100%;
+    margin-top: 10px;
+    transition: transform 0.1s, box-shadow 0.15s;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn.secondary {
+    background: white;
+    color: var(--pink-600);
+    border: 1.5px solid var(--pink-300);
+    box-shadow: none;
+  }
+  .btn.danger {
+    background: linear-gradient(135deg, #fb7185, #be123c);
+  }
+  .btn.small {
+    padding: 6px 12px;
+    font-size: 13px;
+    width: auto;
+    margin: 0;
+  }
+
+  /* Lists */
+  .list { margin-top: 10px; }
+  .list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    margin-bottom: 6px;
+    border: 1px solid rgba(236, 72, 153, 0.12);
+  }
+  .list-item .info { flex: 1; min-width: 0; }
+  .list-item .info .title { font-weight: 600; font-size: 14px; }
+  .list-item .info .sub { font-size: 11px; color: var(--muted); }
+  .list-item .amt { font-weight: 700; margin: 0 8px; }
+  .list-item .x {
+    border: none;
+    background: transparent;
+    color: var(--red);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+  .list-item .x:active { background: rgba(190, 18, 60, 0.1); }
+
+  /* Tabs */
+  nav.tabs {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(236, 72, 153, 0.2);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    z-index: 100;
+    padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
+  }
+  nav.tabs button {
+    background: transparent;
+    border: none;
+    padding: 8px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 600;
+    transition: color 0.15s;
+  }
+  nav.tabs button.active { color: var(--pink-600); }
+  nav.tabs button svg { width: 22px; height: 22px; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Health gauge */
+  .gauge-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 4px;
+  }
+  .gauge { width: 220px; height: 140px; }
+  .score-label {
+    text-align: center;
+    font-weight: 800;
+    font-size: 15px;
+    margin-top: -20px;
+  }
+  .score-sub {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .progress {
+    height: 8px;
+    background: rgba(236, 72, 153, 0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .progress > div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink-400), var(--purple-400));
+    border-radius: 8px;
+    transition: width 0.4s;
+  }
+
+  /* Passcode screen */
+  .lock-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(244, 114, 182, 0.4), transparent 50%),
+      radial-gradient(circle at 80% 90%, rgba(192, 132, 252, 0.4), transparent 50%),
+      linear-gradient(135deg, #fdf2f8, #fae8ff);
+  }
+  .lock-screen h1 {
+    font-size: 30px;
+    margin: 0 0 4px;
+    background: linear-gradient(135deg, var(--pink-600), var(--purple-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lock-screen p { color: var(--muted); margin: 0 0 24px; text-align: center; }
+  .lock-box {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 22px;
+    padding: 22px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: var(--shadow);
+  }
+  .dots { display: flex; justify-content: center; gap: 12px; margin: 18px 0; }
+  .dots div {
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 2px solid var(--pink-400);
+    background: transparent;
+    transition: background 0.15s;
+  }
+  .dots div.filled { background: var(--pink-500); }
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .keypad button {
+    aspect-ratio: 1.4 / 1;
+    border-radius: 14px;
+    border: none;
+    background: white;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--pink-600);
+    box-shadow: 0 2px 6px rgba(236, 72, 153, 0.15);
+    cursor: pointer;
+  }
+  .keypad button:active { transform: scale(0.97); background: var(--pink-50); }
+  .lock-error { color: var(--red); font-size: 13px; min-height: 18px; text-align: center; margin-top: 8px; }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+  .tag.ok { background: #dcfce7; color: var(--green); }
+  .tag.bad { background: #ffe4e6; color: var(--red); }
+  .tag.neutral { background: var(--pink-100); color: var(--pink-600); }
+
+  details { margin-top: 8px; }
+  details summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--purple-600);
+    font-weight: 600;
+    padding: 4px 0;
+  }
+  .toggle {
+    display: inline-flex;
+    background: var(--pink-100);
+    border-radius: 12px;
+    padding: 3px;
+    margin-bottom: 10px;
+  }
+  .toggle button {
+    padding: 6px 14px;
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    color: var(--muted);
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .toggle button.active {
+    background: white;
+    color: var(--pink-600);
+    box-shadow: 0 2px 4px rgba(236, 72, 153, 0.15);
+  }
+
+  table.tax-grid {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  table.tax-grid th, table.tax-grid td {
+    padding: 8px 6px;
+    text-align: right;
+    border-bottom: 1px solid rgba(236, 72, 153, 0.1);
+  }
+  table.tax-grid th:first-child, table.tax-grid td:first-child { text-align: left; }
+  table.tax-grid th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; }
+
+  .settings-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(236, 72, 153, 0.1);
+  }
+  .settings-row:last-child { border-bottom: none; }
+
+  .ribbon {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
+    margin-bottom: 6px;
+  }
+
+  /* Install banner */
+  .install-banner {
+    position: fixed;
+    bottom: 80px;
+    left: 12px;
+    right: 12px;
+    background: white;
+    border: 1.5px solid var(--pink-300);
+    border-radius: 14px;
+    padding: 10px 14px;
+    display: none;
+    z-index: 50;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--shadow);
+    font-size: 13px;
+  }
+  .install-banner .btn.small { margin-left: auto; }
+</style>
+</head>
+<body>
+  <div class="floral-bg"></div>
+
+  <!-- Passcode lock screen -->
+  <div id="lockScreen" class="lock-screen" style="display:none">
+    <h1>Hammbone Finance</h1>
+    <p id="lockPrompt">Enter your 4-digit passcode</p>
+    <div class="lock-box">
+      <div class="dots" id="dots">
+        <div></div><div></div><div></div><div></div>
+      </div>
+      <div class="keypad" id="keypad">
+        <button data-k="1">1</button>
+        <button data-k="2">2</button>
+        <button data-k="3">3</button>
+        <button data-k="4">4</button>
+        <button data-k="5">5</button>
+        <button data-k="6">6</button>
+        <button data-k="7">7</button>
+        <button data-k="8">8</button>
+        <button data-k="9">9</button>
+        <button data-k="clear">✕</button>
+        <button data-k="0">0</button>
+        <button data-k="back">⌫</button>
+      </div>
+      <div class="lock-error" id="lockError"></div>
+    </div>
+  </div>
+
+  <div class="app" id="app" style="display:none">
+    <header>
+      <div class="logo">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z" fill="url(#grad1)"/>
+          <defs>
+            <linearGradient id="grad1" x1="0" y1="0" x2="24" y2="24">
+              <stop offset="0" stop-color="#ec4899"/>
+              <stop offset="1" stop-color="#a855f7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        Hammbone Finance
+      </div>
+      <div class="sub" id="subTitle">Loading…</div>
+    </header>
+
+    <!-- INCOME TAB -->
+    <div class="tab-content active" id="tab-income">
+      <div class="card">
+        <h2>💖 Earned Income</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="label">YTD Gross Earned</div>
+            <div class="value" id="ytdGross">$0.00</div>
+          </div>
+          <div class="stat">
+            <div class="label">Paychecks Logged</div>
+            <div class="value" id="checksCount">0</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="label">Avg Paycheck</div>
+            <div class="value" id="avgCheck">$0.00</div>
+          </div>
+          <div class="stat">
+            <div class="label">Projected Annual</div>
+            <div class="value" id="projAnnual">$0.00</div>
+          </div>
+        </div>
+
+        <h3>Add Paycheck</h3>
+        <div class="row2">
+          <div>
+            <label>Date</label>
+            <input type="date" id="payDate" />
+          </div>
+          <div>
+            <label>Gross Amount</label>
+            <input type="number" id="payAmount" step="0.01" placeholder="0.00" inputmode="decimal" />
+          </div>
+        </div>
+        <button class="btn" onclick="addPaycheck()">Save Paycheck</button>
+
+        <h3>Paycheck History</h3>
+        <div class="list" id="paycheckList"></div>
+      </div>
+    </div>
+
+    <!-- TAXES TAB -->
+    <div class="tab-content" id="tab-taxes">
+      <div class="card">
+        <h2>🧾 Taxes</h2>
+        <div class="muted">Camp Hill, PA · Single filer · Auto-adjusts to YTD income</div>
+
+        <div class="stat-row" style="margin-top:12px">
+          <div class="stat">
+            <div class="label">Total Taxes Paid YTD</div>
+            <div class="value" id="taxesPaidYtd">$0.00</div>
+          </div>
+          <div class="stat">
+            <div class="label">Projected Annual Liability</div>
+            <div class="value" id="projTaxLiability">$0.00</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="label">Expected Paid by Now</div>
+            <div class="value" id="expectedPaid">$0.00</div>
+          </div>
+          <div class="stat">
+            <div class="label">Effective Tax Rate</div>
+            <div class="value" id="effectiveRate">0%</div>
+          </div>
+        </div>
+
+        <div id="taxDeltaCard" class="stat" style="margin-top:6px; background: linear-gradient(135deg, #fce7f3, #e9d5ff);">
+          <div class="label">Surplus / Deficit (paid vs. expected so far)</div>
+          <div class="value" id="taxDelta">$0.00</div>
+          <div class="muted" id="taxDeltaMsg">Log a paycheck to get started.</div>
+        </div>
+
+        <h3>Add Tax Entry from Paystub</h3>
+        <div class="muted">Enter what was withheld on one paycheck. Leave any blank to skip.</div>
+        <div class="row2">
+          <div>
+            <label>Date</label>
+            <input type="date" id="taxDate" />
+          </div>
+          <div>
+            <label>Federal</label>
+            <input type="number" step="0.01" id="taxFederal" placeholder="0.00" inputmode="decimal" />
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label>Social Security</label>
+            <input type="number" step="0.01" id="taxSS" placeholder="0.00" inputmode="decimal" />
+          </div>
+          <div>
+            <label>Medicare</label>
+            <input type="number" step="0.01" id="taxMedicare" placeholder="0.00" inputmode="decimal" />
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label>PA State (3.07%)</label>
+            <input type="number" step="0.01" id="taxPA" placeholder="0.00" inputmode="decimal" />
+          </div>
+          <div>
+            <label>Local EIT (1%)</label>
+            <input type="number" step="0.01" id="taxEIT" placeholder="0.00" inputmode="decimal" />
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label>LST ($2 / pay)</label>
+            <input type="number" step="0.01" id="taxLST" placeholder="2.00" inputmode="decimal" />
+          </div>
+          <div>
+            <label>Other</label>
+            <input type="number" step="0.01" id="taxOther" placeholder="0.00" inputmode="decimal" />
+          </div>
+        </div>
+        <button class="btn" onclick="addTaxEntry()">Save Tax Entry</button>
+
+        <h3>By Category (YTD Paid vs Expected)</h3>
+        <table class="tax-grid" id="taxGrid">
+          <thead>
+            <tr>
+              <th>Tax</th>
+              <th>Paid</th>
+              <th>Expected</th>
+              <th>Δ</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <details>
+          <summary>See tax entry history</summary>
+          <div class="list" id="taxList"></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- BILLS TAB -->
+    <div class="tab-content" id="tab-bills">
+      <div class="card">
+        <h2>💐 Bills</h2>
+        <div class="toggle" id="billToggle">
+          <button class="active" data-view="monthly">Monthly</button>
+          <button data-view="weekly">Weekly</button>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat">
+            <div class="label"><span id="viewLabel1">Monthly</span> Net Take-Home</div>
+            <div class="value" id="netTakeHome">$0.00</div>
+          </div>
+          <div class="stat">
+            <div class="label"><span id="viewLabel2">Monthly</span> Bills Total</div>
+            <div class="value" id="billsTotal">$0.00</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="label">Left Over After Bills</div>
+            <div class="value" id="leftOver">$0.00</div>
+          </div>
+          <div class="stat">
+            <div class="label">Bills Vault Balance</div>
+            <div class="value" id="vaultBalance">$0.00</div>
+          </div>
+        </div>
+
+        <div class="stat" style="margin-top:6px; background: linear-gradient(135deg, #fce7f3, #e9d5ff);">
+          <div class="label">Vault vs. Monthly Bills</div>
+          <div class="value" id="vaultDelta">$0.00</div>
+          <div class="muted" id="vaultMsg">Add your bills and vault deposits.</div>
+        </div>
+
+        <h3>💰 Bills Vault</h3>
+        <div class="muted">Each paycheck, log what you moved into your SoFi "Bills" vault.</div>
+        <div class="row2">
+          <div>
+            <label>Date</label>
+            <input type="date" id="vaultDate" />
+          </div>
+          <div>
+            <label>Amount</label>
+            <input type="number" step="0.01" id="vaultAmount" placeholder="0.00" inputmode="decimal" />
+          </div>
+        </div>
+        <button class="btn secondary" onclick="addVault()">Deposit to Vault</button>
+        <details>
+          <summary>Vault history</summary>
+          <div class="list" id="vaultList"></div>
+        </details>
+
+        <h3>📝 My Bills</h3>
+        <div class="row2">
+          <div>
+            <label>Bill Name</label>
+            <input type="text" id="billName" placeholder="Rent, Netflix…" />
+          </div>
+          <div>
+            <label>Monthly Amount</label>
+            <input type="number" step="0.01" id="billAmount" placeholder="0.00" inputmode="decimal" />
+          </div>
+        </div>
+        <button class="btn" onclick="addBill()">Save Bill</button>
+
+        <h3>Bills Breakdown</h3>
+        <div class="muted" id="billsBreakdownMsg">Bi-weekly ratio shows how much of each bill is covered by your first paycheck vault vs. still needed from your second paycheck.</div>
+        <div class="list" id="billsList"></div>
+      </div>
+    </div>
+
+    <!-- SAVINGS TAB -->
+    <div class="tab-content" id="tab-savings">
+      <div class="card">
+        <h2>🌸 Savings Vaults</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="label">Total Saved</div>
+            <div class="value" id="totalSaved">$0.00</div>
+          </div>
+          <div class="stat">
+            <div class="label">Vaults</div>
+            <div class="value" id="vaultCount">0</div>
+          </div>
+        </div>
+
+        <h3>Create a Vault</h3>
+        <div class="row2">
+          <div>
+            <label>Vault Name</label>
+            <input type="text" id="sVaultName" placeholder="Emergency Fund" />
+          </div>
+          <div>
+            <label>Category</label>
+            <select id="sVaultCat">
+              <option>Emergency</option>
+              <option>Travel</option>
+              <option>Vehicle</option>
+              <option>Home</option>
+              <option>Wedding</option>
+              <option>Gifts</option>
+              <option>Tech</option>
+              <option>Beauty</option>
+              <option>Retirement</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label>Starting Balance</label>
+            <input type="number" step="0.01" id="sVaultStart" placeholder="0.00" inputmode="decimal" />
+          </div>
+          <div>
+            <label>Goal (optional)</label>
+            <input type="number" step="0.01" id="sVaultGoal" placeholder="0.00" inputmode="decimal" />
+          </div>
+        </div>
+        <button class="btn" onclick="addSavingsVault()">Create Vault</button>
+
+        <h3>My Vaults</h3>
+        <div class="list" id="savingsList"></div>
+      </div>
+    </div>
+
+    <!-- HEALTH SCORE TAB -->
+    <div class="tab-content" id="tab-health">
+      <div class="card">
+        <h2>✨ Financial Health Score</h2>
+        <div class="gauge-wrap">
+          <svg class="gauge" viewBox="0 0 220 140">
+            <defs>
+              <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#fb7185"/>
+                <stop offset="50%" stop-color="#ec4899"/>
+                <stop offset="100%" stop-color="#a855f7"/>
+              </linearGradient>
+            </defs>
+            <path d="M 20 120 A 90 90 0 0 1 200 120" stroke="#fce7f3" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path id="gaugeArc" d="M 20 120 A 90 90 0 0 1 200 120" stroke="url(#gaugeGrad)" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="283 283" stroke-dashoffset="283"/>
+            <text x="110" y="100" text-anchor="middle" font-size="44" font-weight="800" fill="#3b0a2e" id="scoreText">0</text>
+            <text x="110" y="125" text-anchor="middle" font-size="12" fill="#8b5a7a" id="scoreGrade">Getting started</text>
+          </svg>
+        </div>
+
+        <h3>Breakdown</h3>
+        <div id="scoreBreakdown"></div>
+
+        <details>
+          <summary>How the score works</summary>
+          <div class="muted" style="margin-top:8px">
+            Score is a weighted blend:
+            <br>• <b>Income consistency</b> (20): do you log paychecks regularly?
+            <br>• <b>Tax discipline</b> (20): are you withholding close to what you'll owe?
+            <br>• <b>Bills coverage</b> (25): does your vault cover your bills?
+            <br>• <b>Surplus rate</b> (15): how much take-home is left after bills?
+            <br>• <b>Savings cushion</b> (20): savings vs. 3 months of bills.
+          </div>
+        </details>
+      </div>
+
+      <div class="card">
+        <h2>⚙️ Settings</h2>
+        <div class="settings-row">
+          <div>
+            <div style="font-weight:600">Your Name</div>
+            <div class="muted" id="nameDisplay">—</div>
+          </div>
+          <button class="btn small secondary" onclick="changeName()">Change</button>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div style="font-weight:600">Passcode</div>
+            <div class="muted">4-digit lock</div>
+          </div>
+          <button class="btn small secondary" onclick="changePasscode()">Change</button>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div style="font-weight:600">Export Data</div>
+            <div class="muted">Backup as JSON</div>
+          </div>
+          <button class="btn small secondary" onclick="exportData()">Export</button>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div style="font-weight:600">Import Data</div>
+            <div class="muted">Restore from JSON</div>
+          </div>
+          <button class="btn small secondary" onclick="importData()">Import</button>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div style="font-weight:600; color: var(--red)">Reset Everything</div>
+            <div class="muted">Clear all data on this device</div>
+          </div>
+          <button class="btn small danger" onclick="resetAll()">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Install banner -->
+    <div class="install-banner" id="installBanner">
+      <span>💗 Add Hammbone Finance to your home screen</span>
+      <button class="btn small" id="installBtn">Install</button>
+      <button class="btn small secondary" onclick="document.getElementById('installBanner').style.display='none'">×</button>
+    </div>
+  </div>
+
+  <!-- Bottom Tabs -->
+  <nav class="tabs" id="tabNav" style="display:none">
+    <button data-tab="income" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Income
+    </button>
+    <button data-tab="taxes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+      Taxes
+    </button>
+    <button data-tab="bills">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v10H3zM7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><circle cx="12" cy="12" r="2"/></svg>
+      Bills
+    </button>
+    <button data-tab="savings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/><path d="M12 5V3M8 6l-2-2M16 6l2-2"/></svg>
+      Savings
+    </button>
+    <button data-tab="health">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+      Score
+    </button>
+  </nav>
+
+<script>
+/* ============================================================
+   HAMMBONE FINANCE
+   Single-file PWA. All data in localStorage on this device only.
+   ============================================================ */
+
+// ---------- Tax config (2025 single filer, Camp Hill PA) ----------
+const TAX_CONFIG = {
+  year: 2025,
+  payPeriodsPerYear: 26,                 // bi-weekly
+  federalStandardDeduction: 15000,
+  federalBrackets: [                     // (upper, rate) on taxable income after std deduction
+    [11925, 0.10],
+    [48475, 0.12],
+    [103350, 0.22],
+    [197300, 0.24],
+    [250525, 0.32],
+    [626350, 0.35],
+    [Infinity, 0.37],
+  ],
+  ssRate: 0.062,
+  ssWageBase: 176100,
+  medicareRate: 0.0145,
+  medicareAddlRate: 0.009,               // on wages over $200k (single)
+  medicareAddlThreshold: 200000,
+  paRate: 0.0307,
+  localEitRate: 0.01,                    // Camp Hill Borough + School District combined
+  lstAnnual: 52,                         // $2 per biweekly pay
+};
+
+function calcFederal(gross) {
+  const taxable = Math.max(0, gross - TAX_CONFIG.federalStandardDeduction);
+  let tax = 0, prev = 0;
+  for (const [upper, rate] of TAX_CONFIG.federalBrackets) {
+    if (taxable > upper) {
+      tax += (upper - prev) * rate;
+      prev = upper;
+    } else {
+      tax += Math.max(0, taxable - prev) * rate;
+      return tax;
+    }
+  }
+  return tax;
+}
+function calcSS(gross)      { return Math.min(gross, TAX_CONFIG.ssWageBase) * TAX_CONFIG.ssRate; }
+function calcMedicare(g)    {
+  let t = g * TAX_CONFIG.medicareRate;
+  if (g > TAX_CONFIG.medicareAddlThreshold) t += (g - TAX_CONFIG.medicareAddlThreshold) * TAX_CONFIG.medicareAddlRate;
+  return t;
+}
+function calcPA(g)          { return g * TAX_CONFIG.paRate; }
+function calcEIT(g)         { return g * TAX_CONFIG.localEitRate; }
+function calcLST(annualFraction) { return TAX_CONFIG.lstAnnual * annualFraction; } // fraction of year passed
+
+// ---------- Storage layer ----------
+const SKEY = "hammbone_finance_v1";
+const defaultState = () => ({
+  setup: false,
+  name: "",
+  passcodeHash: "",
+  paychecks: [],
+  taxes: [],       // { date, federal, ss, medicare, pa, eit, lst, other }
+  bills: [],       // { id, name, monthly }
+  vaultDeposits: [], // { date, amount }
+  savings: [],     // { id, name, category, balance, goal, history: [{date,type,amount}] }
+  created: new Date().toISOString(),
+});
+let state = null;
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(SKEY);
+    state = raw ? JSON.parse(raw) : defaultState();
+  } catch (e) { state = defaultState(); }
+}
+function saveState() { localStorage.setItem(SKEY, JSON.stringify(state)); }
+
+// Tiny hash (not cryptographic — just obscures the passcode on disk)
+function tinyHash(s) {
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = (h * 33) ^ s.charCodeAt(i);
+  return (h >>> 0).toString(16);
+}
+
+// ---------- Helpers ----------
+const fmt = n => "$" + (n || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmt0 = n => "$" + Math.round(n || 0).toLocaleString("en-US");
+const todayStr = () => new Date().toISOString().slice(0, 10);
+const uid = () => Math.random().toString(36).slice(2, 10);
+
+function yearStart()        { return new Date(new Date().getFullYear(), 0, 1); }
+function yearEnd()          { return new Date(new Date().getFullYear(), 11, 31, 23, 59, 59); }
+function daysInYear(year)   { return ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) ? 366 : 365; }
+function fractionOfYearElapsed() {
+  const now = new Date();
+  const start = yearStart();
+  const total = daysInYear(now.getFullYear()) * 86400 * 1000;
+  return (now - start) / total;
+}
+
+// ---------- YTD / projections ----------
+function ytdGrossIncome() { return state.paychecks.reduce((s, p) => s + (+p.amount || 0), 0); }
+function ytdTaxesPaid() {
+  return state.taxes.reduce((s, t) => s + (+t.federal||0) + (+t.ss||0) + (+t.medicare||0) + (+t.pa||0) + (+t.eit||0) + (+t.lst||0) + (+t.other||0), 0);
+}
+function ytdTaxesByCategory() {
+  const tot = { federal:0, ss:0, medicare:0, pa:0, eit:0, lst:0, other:0 };
+  state.taxes.forEach(t => {
+    tot.federal += +t.federal || 0;
+    tot.ss += +t.ss || 0;
+    tot.medicare += +t.medicare || 0;
+    tot.pa += +t.pa || 0;
+    tot.eit += +t.eit || 0;
+    tot.lst += +t.lst || 0;
+    tot.other += +t.other || 0;
+  });
+  return tot;
+}
+function projectedAnnualIncome() {
+  // If at least 2 paychecks, average × 26; else extrapolate YTD by fraction of year
+  if (state.paychecks.length >= 2) {
+    const avg = ytdGrossIncome() / state.paychecks.length;
+    return avg * TAX_CONFIG.payPeriodsPerYear;
+  } else if (state.paychecks.length === 1) {
+    return (+state.paychecks[0].amount) * TAX_CONFIG.payPeriodsPerYear;
+  }
+  return 0;
+}
+function projectedAnnualTaxByCategory(annualGross) {
+  return {
+    federal: calcFederal(annualGross),
+    ss: calcSS(annualGross),
+    medicare: calcMedicare(annualGross),
+    pa: calcPA(annualGross),
+    eit: calcEIT(annualGross),
+    lst: TAX_CONFIG.lstAnnual,
+  };
+}
+function projectedAnnualTaxTotal(annualGross) {
+  const c = projectedAnnualTaxByCategory(annualGross);
+  return c.federal + c.ss + c.medicare + c.pa + c.eit + c.lst;
+}
+function expectedTaxPaidSoFar(annualGross) {
+  // Prorate annual liability by share of paychecks already received
+  const logged = state.paychecks.length;
+  if (logged === 0) return { total:0, byCat:{federal:0,ss:0,medicare:0,pa:0,eit:0,lst:0} };
+  const frac = Math.min(logged / TAX_CONFIG.payPeriodsPerYear, 1);
+  const annualCat = projectedAnnualTaxByCategory(annualGross);
+  const byCat = {};
+  for (const k in annualCat) byCat[k] = annualCat[k] * frac;
+  const total = Object.values(byCat).reduce((a,b)=>a+b, 0);
+  return { total, byCat };
+}
+
+// ---------- Rendering ----------
+function renderAll() {
+  document.getElementById("subTitle").textContent =
+    (state.name ? `Welcome back, ${state.name} 💖 ` : "") + `· ${new Date().getFullYear()}`;
+  renderIncome();
+  renderTaxes();
+  renderBills();
+  renderSavings();
+  renderHealth();
+  renderNameSettings();
+}
+
+function renderNameSettings() {
+  document.getElementById("nameDisplay").textContent = state.name || "—";
+}
+
+// ----- Income tab -----
+function renderIncome() {
+  const ytd = ytdGrossIncome();
+  document.getElementById("ytdGross").textContent = fmt(ytd);
+  document.getElementById("checksCount").textContent = state.paychecks.length;
+  document.getElementById("avgCheck").textContent = fmt(state.paychecks.length ? ytd / state.paychecks.length : 0);
+  document.getElementById("projAnnual").textContent = fmt(projectedAnnualIncome());
+
+  const list = document.getElementById("paycheckList");
+  if (!state.paychecks.length) {
+    list.innerHTML = `<div class="muted">No paychecks yet. Add your first above.</div>`;
+    return;
+  }
+  list.innerHTML = [...state.paychecks]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .map(p => `
+      <div class="list-item">
+        <div class="info">
+          <div class="title">${fmt(p.amount)}</div>
+          <div class="sub">${formatDate(p.date)}</div>
+        </div>
+        <button class="x" onclick="deletePaycheck('${p.id}')">✕</button>
+      </div>`).join("");
+}
+
+function addPaycheck() {
+  const date = document.getElementById("payDate").value || todayStr();
+  const amount = parseFloat(document.getElementById("payAmount").value);
+  if (!(amount > 0)) return alert("Enter a paycheck amount");
+  state.paychecks.push({ id: uid(), date, amount });
+  saveState();
+  document.getElementById("payAmount").value = "";
+  renderAll();
+}
+function deletePaycheck(id) {
+  if (!confirm("Delete this paycheck?")) return;
+  state.paychecks = state.paychecks.filter(p => p.id !== id);
+  saveState();
+  renderAll();
+}
+
+// ----- Taxes tab -----
+function renderTaxes() {
+  const ytdIncome = ytdGrossIncome();
+  const projected = projectedAnnualIncome();
+  const paid = ytdTaxesByCategory();
+  const totalPaid = ytdTaxesPaid();
+  const annualLiability = projectedAnnualTaxTotal(projected);
+  const expected = expectedTaxPaidSoFar(projected);
+  const effectiveRate = projected > 0 ? (annualLiability / projected) * 100 : 0;
+  const delta = totalPaid - expected.total;
+
+  document.getElementById("taxesPaidYtd").textContent = fmt(totalPaid);
+  document.getElementById("projTaxLiability").textContent = fmt(annualLiability);
+  document.getElementById("expectedPaid").textContent = fmt(expected.total);
+  document.getElementById("effectiveRate").textContent = effectiveRate.toFixed(1) + "%";
+
+  const dEl = document.getElementById("taxDelta");
+  const dMsg = document.getElementById("taxDeltaMsg");
+  if (state.paychecks.length === 0) {
+    dEl.textContent = fmt(0);
+    dEl.className = "value";
+    dMsg.textContent = "Log a paycheck to get started.";
+  } else if (delta >= 0) {
+    dEl.textContent = "+" + fmt(delta);
+    dEl.className = "value pos";
+    dMsg.textContent = "You're ahead on withholding — nice cushion 💖";
+  } else {
+    dEl.textContent = "-" + fmt(Math.abs(delta));
+    dEl.className = "value neg";
+    dMsg.textContent = "You're under-withholding. Consider extra payment or W-4 update.";
+  }
+
+  // Grid
+  const annualCat = projectedAnnualTaxByCategory(projected);
+  const frac = Math.min(state.paychecks.length / TAX_CONFIG.payPeriodsPerYear, 1);
+  const rows = [
+    ["Federal", paid.federal, annualCat.federal * frac],
+    ["Social Security", paid.ss, annualCat.ss * frac],
+    ["Medicare", paid.medicare, annualCat.medicare * frac],
+    ["PA State (3.07%)", paid.pa, annualCat.pa * frac],
+    ["Local EIT (1%)", paid.eit, annualCat.eit * frac],
+    ["LST ($52/yr)", paid.lst, TAX_CONFIG.lstAnnual * frac],
+    ["Other", paid.other, 0],
+  ];
+  document.querySelector("#taxGrid tbody").innerHTML = rows.map(([name, p, e]) => {
+    const d = p - e;
+    const cls = d >= 0 ? "pos" : "neg";
+    return `<tr>
+      <td>${name}</td>
+      <td>${fmt(p)}</td>
+      <td>${fmt(e)}</td>
+      <td class="${cls}" style="color: ${d>=0?'var(--green)':'var(--red)'}">${d>=0?"+":""}${fmt(d)}</td>
+    </tr>`;
+  }).join("");
+
+  const tList = document.getElementById("taxList");
+  if (!state.taxes.length) {
+    tList.innerHTML = `<div class="muted">No tax entries yet.</div>`;
+  } else {
+    tList.innerHTML = [...state.taxes]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .map(t => {
+        const total = (+t.federal||0)+(+t.ss||0)+(+t.medicare||0)+(+t.pa||0)+(+t.eit||0)+(+t.lst||0)+(+t.other||0);
+        return `<div class="list-item">
+          <div class="info">
+            <div class="title">${fmt(total)}</div>
+            <div class="sub">${formatDate(t.date)} · F ${fmt(t.federal||0)} · SS ${fmt(t.ss||0)} · Med ${fmt(t.medicare||0)} · PA ${fmt(t.pa||0)} · EIT ${fmt(t.eit||0)} · LST ${fmt(t.lst||0)}</div>
+          </div>
+          <button class="x" onclick="deleteTax('${t.id}')">✕</button>
+        </div>`;
+      }).join("");
+  }
+}
+function addTaxEntry() {
+  const e = {
+    id: uid(),
+    date: document.getElementById("taxDate").value || todayStr(),
+    federal: parseFloat(document.getElementById("taxFederal").value) || 0,
+    ss: parseFloat(document.getElementById("taxSS").value) || 0,
+    medicare: parseFloat(document.getElementById("taxMedicare").value) || 0,
+    pa: parseFloat(document.getElementById("taxPA").value) || 0,
+    eit: parseFloat(document.getElementById("taxEIT").value) || 0,
+    lst: parseFloat(document.getElementById("taxLST").value) || 0,
+    other: parseFloat(document.getElementById("taxOther").value) || 0,
+  };
+  const total = e.federal + e.ss + e.medicare + e.pa + e.eit + e.lst + e.other;
+  if (total === 0) return alert("Enter at least one tax amount");
+  state.taxes.push(e);
+  saveState();
+  ["taxFederal","taxSS","taxMedicare","taxPA","taxEIT","taxLST","taxOther"].forEach(id => document.getElementById(id).value = "");
+  renderAll();
+}
+function deleteTax(id) {
+  if (!confirm("Delete this tax entry?")) return;
+  state.taxes = state.taxes.filter(t => t.id !== id);
+  saveState();
+  renderAll();
+}
+
+// ----- Bills tab -----
+let billView = "monthly";
+function renderBills() {
+  const ytdIncome = ytdGrossIncome();
+  const totalTaxes = ytdTaxesPaid();
+  const ytdNet = ytdIncome - totalTaxes;
+  const paychecksLogged = state.paychecks.length || 1;
+  const avgPayNet = state.paychecks.length > 0 ? ytdNet / state.paychecks.length : 0;
+
+  const weeklyNet = avgPayNet / 2;              // biweekly split → per week
+  const monthlyNet = avgPayNet * (26 / 12);     // biweekly → monthly
+
+  const monthlyBills = state.bills.reduce((s, b) => s + (+b.monthly || 0), 0);
+  const weeklyBills = monthlyBills * (12 / 52);
+
+  const net = billView === "monthly" ? monthlyNet : weeklyNet;
+  const bills = billView === "monthly" ? monthlyBills : weeklyBills;
+  const left = net - bills;
+
+  document.getElementById("viewLabel1").textContent = billView === "monthly" ? "Monthly" : "Weekly";
+  document.getElementById("viewLabel2").textContent = billView === "monthly" ? "Monthly" : "Weekly";
+  document.getElementById("netTakeHome").textContent = fmt(net);
+  document.getElementById("billsTotal").textContent = fmt(bills);
+  document.getElementById("leftOver").textContent = fmt(left);
+  document.getElementById("leftOver").className = "value " + (left >= 0 ? "pos" : "neg");
+
+  // Vault balance (this month) — this month's deposits minus monthly bill total
+  const now = new Date();
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
+  const monthVault = state.vaultDeposits.filter(v => v.date >= startOfMonth).reduce((s,v) => s + (+v.amount||0), 0);
+  document.getElementById("vaultBalance").textContent = fmt(monthVault);
+
+  const vaultDelta = monthVault - monthlyBills;
+  const vEl = document.getElementById("vaultDelta");
+  const vMsg = document.getElementById("vaultMsg");
+  if (monthlyBills === 0) {
+    vEl.textContent = fmt(0);
+    vEl.className = "value";
+    vMsg.textContent = "Add your bills to see the comparison.";
+  } else if (vaultDelta >= 0) {
+    vEl.textContent = "+" + fmt(vaultDelta);
+    vEl.className = "value pos";
+    vMsg.textContent = "Vault covers all bills — surplus this month 🌸";
+  } else {
+    vEl.textContent = "-" + fmt(Math.abs(vaultDelta));
+    vEl.className = "value neg";
+    vMsg.textContent = "Need " + fmt(Math.abs(vaultDelta)) + " more in vault to cover bills.";
+  }
+
+  // Vault list
+  const vList = document.getElementById("vaultList");
+  if (!state.vaultDeposits.length) {
+    vList.innerHTML = `<div class="muted">No deposits yet.</div>`;
+  } else {
+    vList.innerHTML = [...state.vaultDeposits]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(0, 30)
+      .map(v => `<div class="list-item">
+        <div class="info"><div class="title">${fmt(v.amount)}</div><div class="sub">${formatDate(v.date)}</div></div>
+        <button class="x" onclick="deleteVault('${v.id}')">✕</button>
+      </div>`).join("");
+  }
+
+  // Bills breakdown with bi-weekly coverage ratio
+  const list = document.getElementById("billsList");
+  if (!state.bills.length) {
+    list.innerHTML = `<div class="muted">No bills yet. Add one above.</div>`;
+    return;
+  }
+  // Two paychecks/month on avg → each covers half of monthly bills if deposited equally
+  // "Coverage ratio" = what % of this bill the current vault balance covers
+  list.innerHTML = state.bills.map(b => {
+    const coverage = b.monthly > 0 ? Math.min(1, monthVault / monthlyBills) : 1; // proportional across all bills
+    const covered = b.monthly * coverage;
+    const needed = b.monthly - covered;
+    const pct = Math.round(coverage * 100);
+    return `<div class="list-item" style="flex-direction:column; align-items:stretch; gap:6px">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+        <div class="info">
+          <div class="title">${b.name}</div>
+          <div class="sub">Monthly: ${fmt(b.monthly)} · Covered so far: ${fmt(covered)} · Still needed: ${fmt(needed)}</div>
+        </div>
+        <button class="x" onclick="deleteBill('${b.id}')">✕</button>
+      </div>
+      <div class="progress"><div style="width:${pct}%"></div></div>
+      <div class="muted" style="font-size:11px">${pct}% covered by vault</div>
+    </div>`;
+  }).join("");
+}
+function addBill() {
+  const name = document.getElementById("billName").value.trim();
+  const monthly = parseFloat(document.getElementById("billAmount").value);
+  if (!name || !(monthly > 0)) return alert("Enter a name and amount");
+  state.bills.push({ id: uid(), name, monthly });
+  saveState();
+  document.getElementById("billName").value = "";
+  document.getElementById("billAmount").value = "";
+  renderAll();
+}
+function deleteBill(id) {
+  if (!confirm("Delete this bill?")) return;
+  state.bills = state.bills.filter(b => b.id !== id);
+  saveState();
+  renderAll();
+}
+function addVault() {
+  const date = document.getElementById("vaultDate").value || todayStr();
+  const amount = parseFloat(document.getElementById("vaultAmount").value);
+  if (!(amount > 0)) return alert("Enter a deposit amount");
+  state.vaultDeposits.push({ id: uid(), date, amount });
+  saveState();
+  document.getElementById("vaultAmount").value = "";
+  renderAll();
+}
+function deleteVault(id) {
+  if (!confirm("Delete this vault deposit?")) return;
+  state.vaultDeposits = state.vaultDeposits.filter(v => v.id !== id);
+  saveState();
+  renderAll();
+}
+
+// ----- Savings tab -----
+function renderSavings() {
+  const total = state.savings.reduce((s, v) => s + (+v.balance || 0), 0);
+  document.getElementById("totalSaved").textContent = fmt(total);
+  document.getElementById("vaultCount").textContent = state.savings.length;
+
+  const list = document.getElementById("savingsList");
+  if (!state.savings.length) {
+    list.innerHTML = `<div class="muted">No vaults yet. Create one above to track a savings category.</div>`;
+    return;
+  }
+  list.innerHTML = state.savings.map(v => {
+    const goalPct = v.goal > 0 ? Math.min(100, Math.round((v.balance / v.goal) * 100)) : 0;
+    return `<div class="list-item" style="flex-direction:column; align-items:stretch; gap:6px">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="info">
+          <div class="title">${v.name} <span class="tag neutral">${v.category}</span></div>
+          <div class="sub">${fmt(v.balance)}${v.goal > 0 ? ` / ${fmt(v.goal)} goal` : ""}</div>
+        </div>
+        <button class="x" onclick="deleteSavings('${v.id}')">✕</button>
+      </div>
+      ${v.goal > 0 ? `<div class="progress"><div style="width:${goalPct}%"></div></div><div class="muted" style="font-size:11px">${goalPct}% of goal</div>` : ""}
+      <div style="display:flex; gap:6px">
+        <button class="btn small secondary" onclick="changeSavings('${v.id}', 'deposit')">+ Deposit</button>
+        <button class="btn small secondary" onclick="changeSavings('${v.id}', 'withdraw')">− Withdraw</button>
+      </div>
+    </div>`;
+  }).join("");
+}
+function addSavingsVault() {
+  const name = document.getElementById("sVaultName").value.trim();
+  if (!name) return alert("Name your vault");
+  const category = document.getElementById("sVaultCat").value;
+  const balance = parseFloat(document.getElementById("sVaultStart").value) || 0;
+  const goal = parseFloat(document.getElementById("sVaultGoal").value) || 0;
+  state.savings.push({ id: uid(), name, category, balance, goal, history: [] });
+  saveState();
+  document.getElementById("sVaultName").value = "";
+  document.getElementById("sVaultStart").value = "";
+  document.getElementById("sVaultGoal").value = "";
+  renderAll();
+}
+function changeSavings(id, kind) {
+  const v = state.savings.find(x => x.id === id);
+  if (!v) return;
+  const amt = parseFloat(prompt(`${kind === "deposit" ? "Deposit" : "Withdraw"} amount:`));
+  if (!(amt > 0)) return;
+  v.balance += kind === "deposit" ? amt : -amt;
+  if (v.balance < 0) v.balance = 0;
+  v.history = v.history || [];
+  v.history.push({ date: todayStr(), type: kind, amount: amt });
+  saveState();
+  renderAll();
+}
+function deleteSavings(id) {
+  if (!confirm("Delete this vault?")) return;
+  state.savings = state.savings.filter(v => v.id !== id);
+  saveState();
+  renderAll();
+}
+
+// ----- Health score -----
+function calcHealth() {
+  // Income consistency — # paychecks this year vs expected so far
+  const now = new Date();
+  const weeksElapsed = Math.max(1, Math.floor((now - yearStart()) / (7 * 86400 * 1000)));
+  const expectedChecks = Math.max(1, Math.floor(weeksElapsed / 2));
+  const incomeScore = Math.min(1, state.paychecks.length / expectedChecks) * 20;
+
+  // Tax discipline
+  const projected = projectedAnnualIncome();
+  const exp = expectedTaxPaidSoFar(projected).total;
+  const paid = ytdTaxesPaid();
+  let taxScore;
+  if (exp === 0) taxScore = 10; // neutral until data
+  else {
+    const ratio = paid / exp; // 1 = perfect
+    if (ratio >= 0.98 && ratio <= 1.05) taxScore = 20;
+    else if (ratio >= 0.90 && ratio <= 1.10) taxScore = 17;
+    else if (ratio >= 0.80 && ratio <= 1.20) taxScore = 12;
+    else if (ratio >= 0.70 && ratio <= 1.30) taxScore = 7;
+    else taxScore = 3;
+  }
+
+  // Bills coverage
+  const ytdIncome = ytdGrossIncome();
+  const ytdNet = ytdIncome - paid;
+  const avgPayNet = state.paychecks.length ? ytdNet / state.paychecks.length : 0;
+  const monthlyNet = avgPayNet * (26 / 12);
+  const monthlyBills = state.bills.reduce((s, b) => s + (+b.monthly || 0), 0);
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
+  const monthVault = state.vaultDeposits.filter(v => v.date >= startOfMonth).reduce((s,v)=>s+(+v.amount||0),0);
+
+  let billsScore = 12.5;
+  if (monthlyBills > 0) {
+    billsScore = Math.min(1, monthVault / monthlyBills) * 25;
+  } else if (state.bills.length === 0) {
+    billsScore = 0; // encourage adding bills
+  }
+
+  // Surplus rate (take-home left after bills)
+  let surplusScore;
+  if (monthlyNet <= 0) surplusScore = 0;
+  else {
+    const rate = (monthlyNet - monthlyBills) / monthlyNet;
+    if (rate >= 0.3) surplusScore = 15;
+    else if (rate >= 0.2) surplusScore = 12;
+    else if (rate >= 0.1) surplusScore = 8;
+    else if (rate >= 0) surplusScore = 4;
+    else surplusScore = 0;
+  }
+
+  // Savings cushion (3-month rule)
+  const totalSaved = state.savings.reduce((s, v) => s + (+v.balance || 0), 0);
+  let savingsScore;
+  if (monthlyBills === 0) savingsScore = totalSaved > 0 ? 10 : 0;
+  else {
+    const months = totalSaved / monthlyBills;
+    if (months >= 6) savingsScore = 20;
+    else if (months >= 3) savingsScore = 16;
+    else if (months >= 1) savingsScore = 10;
+    else if (months >= 0.5) savingsScore = 5;
+    else savingsScore = 2;
+  }
+
+  const total = Math.round(incomeScore + taxScore + billsScore + surplusScore + savingsScore);
+  return {
+    total: Math.min(100, total),
+    breakdown: [
+      { label: "Income consistency",  points: incomeScore,  max: 20, detail: `${state.paychecks.length} / ${expectedChecks} expected paychecks` },
+      { label: "Tax discipline",      points: taxScore,     max: 20, detail: exp ? `${((paid/exp)*100).toFixed(0)}% of expected withheld` : "Need data" },
+      { label: "Bills coverage",      points: billsScore,   max: 25, detail: monthlyBills ? `${Math.round(Math.min(1,monthVault/monthlyBills)*100)}% covered by vault` : "No bills yet" },
+      { label: "Surplus rate",        points: surplusScore, max: 15, detail: monthlyNet ? `${Math.round(((monthlyNet-monthlyBills)/monthlyNet)*100)}% of take-home left` : "Need income" },
+      { label: "Savings cushion",     points: savingsScore, max: 20, detail: monthlyBills ? `${(totalSaved/monthlyBills).toFixed(1)} months covered` : `${fmt(totalSaved)} saved` },
+    ],
+  };
+}
+function gradeLabel(score) {
+  if (score >= 85) return "Excellent 💎";
+  if (score >= 70) return "Strong 💖";
+  if (score >= 55) return "On track 🌸";
+  if (score >= 40) return "Needs care 🌷";
+  return "Just starting 🌱";
+}
+function renderHealth() {
+  const h = calcHealth();
+  document.getElementById("scoreText").textContent = h.total;
+  document.getElementById("scoreGrade").textContent = gradeLabel(h.total);
+  // arc length of the half-circle stroke
+  const arcLen = 283;
+  document.getElementById("gaugeArc").setAttribute("stroke-dashoffset", arcLen - (arcLen * h.total / 100));
+
+  document.getElementById("scoreBreakdown").innerHTML = h.breakdown.map(b => {
+    const pct = (b.points / b.max) * 100;
+    return `<div style="margin: 10px 0 4px;">
+      <div style="display:flex; justify-content:space-between; font-size:13px;">
+        <b>${b.label}</b>
+        <span>${Math.round(b.points)} / ${b.max}</span>
+      </div>
+      <div class="progress"><div style="width:${pct}%"></div></div>
+      <div class="muted" style="font-size:11px; margin-top:2px">${b.detail}</div>
+    </div>`;
+  }).join("");
+}
+
+// ---------- Utilities ----------
+function formatDate(iso) {
+  if (!iso) return "";
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
+// ---------- Tabs ----------
+function selectTab(name) {
+  document.querySelectorAll(".tab-content").forEach(el => el.classList.toggle("active", el.id === "tab-" + name));
+  document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
+}
+
+// ---------- Settings actions ----------
+function changeName() {
+  const n = prompt("Your name:", state.name || "");
+  if (n !== null) { state.name = n.trim(); saveState(); renderAll(); }
+}
+function changePasscode() {
+  const p = prompt("New 4-digit passcode:");
+  if (!p || !/^\d{4}$/.test(p)) return alert("Must be exactly 4 digits");
+  state.passcodeHash = tinyHash(p);
+  saveState();
+  alert("Passcode updated 💖");
+}
+function exportData() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `hammbone-finance-${todayStr()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function importData() {
+  const inp = document.createElement("input");
+  inp.type = "file";
+  inp.accept = "application/json";
+  inp.onchange = () => {
+    const f = inp.files[0];
+    if (!f) return;
+    const r = new FileReader();
+    r.onload = () => {
+      try {
+        const data = JSON.parse(r.result);
+        if (!confirm("Replace all current data with the imported file?")) return;
+        state = { ...defaultState(), ...data };
+        saveState();
+        renderAll();
+        alert("Imported 💖");
+      } catch { alert("Invalid file"); }
+    };
+    r.readAsText(f);
+  };
+  inp.click();
+}
+function resetAll() {
+  if (!confirm("Really wipe ALL data on this device? This cannot be undone.")) return;
+  if (!confirm("Last chance — really erase everything?")) return;
+  localStorage.removeItem(SKEY);
+  location.reload();
+}
+
+// ---------- Lock screen ----------
+let lockBuffer = "";
+let isCreating = false;
+let firstPass = "";
+
+function showLock() {
+  document.getElementById("lockScreen").style.display = "flex";
+  document.getElementById("app").style.display = "none";
+  document.getElementById("tabNav").style.display = "none";
+  lockBuffer = "";
+  updateDots();
+  document.getElementById("lockError").textContent = "";
+
+  if (!state.setup || !state.passcodeHash) {
+    isCreating = true;
+    firstPass = "";
+    document.getElementById("lockPrompt").textContent = "Create a 4-digit passcode";
+  } else {
+    isCreating = false;
+    document.getElementById("lockPrompt").textContent = `Welcome back${state.name ? ", " + state.name : ""}`;
+  }
+}
+function updateDots() {
+  const dots = document.getElementById("dots").children;
+  for (let i = 0; i < 4; i++) dots[i].classList.toggle("filled", i < lockBuffer.length);
+}
+function onKey(k) {
+  const err = document.getElementById("lockError");
+  err.textContent = "";
+  if (k === "clear") { lockBuffer = ""; updateDots(); return; }
+  if (k === "back")  { lockBuffer = lockBuffer.slice(0, -1); updateDots(); return; }
+  if (lockBuffer.length >= 4) return;
+  lockBuffer += k;
+  updateDots();
+  if (lockBuffer.length === 4) {
+    setTimeout(() => {
+      if (isCreating) {
+        if (!firstPass) {
+          firstPass = lockBuffer;
+          lockBuffer = "";
+          updateDots();
+          document.getElementById("lockPrompt").textContent = "Confirm your passcode";
+        } else if (firstPass === lockBuffer) {
+          state.passcodeHash = tinyHash(lockBuffer);
+          state.setup = true;
+          if (!state.name) {
+            const n = prompt("What's your name? (shown on home screen)") || "";
+            state.name = n.trim();
+          }
+          saveState();
+          enterApp();
+        } else {
+          firstPass = "";
+          lockBuffer = "";
+          updateDots();
+          err.textContent = "Didn't match — start over";
+          document.getElementById("lockPrompt").textContent = "Create a 4-digit passcode";
+        }
+      } else {
+        if (tinyHash(lockBuffer) === state.passcodeHash) {
+          enterApp();
+        } else {
+          lockBuffer = "";
+          updateDots();
+          err.textContent = "Wrong passcode";
+        }
+      }
+    }, 120);
+  }
+}
+function enterApp() {
+  document.getElementById("lockScreen").style.display = "none";
+  document.getElementById("app").style.display = "block";
+  document.getElementById("tabNav").style.display = "grid";
+  renderAll();
+}
+
+// ---------- PWA install handling ----------
+let deferredPrompt = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById("installBanner").style.display = "flex";
+});
+document.getElementById("installBtn")?.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById("installBanner").style.display = "none";
+});
+
+// ---------- Init ----------
+loadState();
+// Default date fields to today
+["payDate","taxDate","vaultDate"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.value = todayStr();
+});
+
+document.getElementById("keypad").addEventListener("click", (e) => {
+  const k = e.target.closest("button")?.dataset.k;
+  if (k) onKey(k);
+});
+document.getElementById("tabNav").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (b && b.dataset.tab) selectTab(b.dataset.tab);
+});
+document.getElementById("billToggle").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  billView = b.dataset.view;
+  document.querySelectorAll("#billToggle button").forEach(x => x.classList.toggle("active", x === b));
+  renderBills();
+});
+
+showLock();
+
+// Register service worker
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
