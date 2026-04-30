@@ -1,5 +1,5 @@
 // Hammbone Finance service worker — offline cache
-const CACHE = "hammbone-finance-v4";
+const CACHE = "hammbone-finance-v6";
 const ASSETS = [
   "./",
   "./index.html",
