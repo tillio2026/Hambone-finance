@@ -483,7 +483,7 @@
         <div class="row2">
           <div>
             <label>Income Type</label>
-            <select id="srcType">
+            <select id="srcType" onchange="onSrcTypeChange()">
               <option value="w2">W-2 Employee</option>
               <option value="contractor">1099 Contractor</option>
               <option value="capital_gains">Capital Gains</option>
@@ -500,6 +500,13 @@
               <option value="irregular">Irregular</option>
             </select>
           </div>
+        </div>
+        <div id="srcCgTermRow" style="display:none">
+          <label>Holding Term</label>
+          <select id="srcCgTerm">
+            <option value="long" selected>Long-term (held &gt; 1 year — preferred LTCG rates)</option>
+            <option value="short">Short-term (held &le; 1 year — taxed as ordinary)</option>
+          </select>
         </div>
         <button class="btn" onclick="addSource()">Save Source</button>
 
@@ -561,6 +568,12 @@
           <div class="label">Surplus / Deficit (paid vs. expected on YTD)</div>
           <div class="value" id="taxDelta">$0.00</div>
           <div class="muted" id="taxDeltaMsg">Log a paycheck to get started.</div>
+        </div>
+
+        <div class="stat" style="margin-top:6px;">
+          <div class="label">Self-Paid Tax Owed (no withholding)</div>
+          <div class="value" id="selfPaidTax">$0.00</div>
+          <div class="muted">Set this aside for quarterly estimated payments. Covers tax owed on 1099, capital gains, and interest income (no automatic withholding).</div>
         </div>
 
         <h3>Add Tax Entry from Paystub</h3>
@@ -898,6 +911,15 @@ const TAX_CONFIG = {
   paRate: 0.0307,
   localEitRate: 0.01,
   lstAnnual: 52,
+  // 2025 single filer long-term capital gains brackets (stacked on top of taxable ordinary income)
+  ltcgBrackets: [
+    [48350, 0.00],
+    [533400, 0.15],
+    [Infinity, 0.20],
+  ],
+  // Net Investment Income Tax: 3.8% on investment income when MAGI exceeds threshold
+  niitThreshold: 200000,
+  niitRate: 0.038,
 };
 
 const INCOME_TYPES = {
@@ -1027,11 +1049,56 @@ function ytdTaxesByCategory() {
   return tot;
 }
 
+// LTCG stacks on top of taxable ordinary income — fills the LTCG brackets above what ordinary already used
+function calcLTCGTax(taxableOrdinary, ltCapGains) {
+  if (ltCapGains <= 0) return 0;
+  let tax = 0;
+  const lower = taxableOrdinary;
+  const upper = taxableOrdinary + ltCapGains;
+  let prev = 0;
+  for (const [top, rate] of TAX_CONFIG.ltcgBrackets) {
+    if (upper <= prev) break;
+    const segLow = Math.max(prev, lower);
+    const segHigh = Math.min(top, upper);
+    if (segHigh > segLow) tax += (segHigh - segLow) * rate;
+    prev = top;
+  }
+  return tax;
+}
+function calcNIIT(magi, netInvestmentIncome) {
+  if (magi <= TAX_CONFIG.niitThreshold || netInvestmentIncome <= 0) return 0;
+  return Math.min(netInvestmentIncome, magi - TAX_CONFIG.niitThreshold) * TAX_CONFIG.niitRate;
+}
+
+// Split YTD capital gains by long-term vs short-term flag on each source
+function ytdCapGainsByTerm() {
+  let lt = 0, st = 0;
+  state.sources.forEach(s => {
+    if (s.type !== "capital_gains") return;
+    const amt = state.paychecks
+      .filter(p => p.sourceId === s.id)
+      .reduce((a, p) => a + (+p.amount || 0), 0);
+    if (s.longTerm === false) st += amt; else lt += amt; // default to long-term
+  });
+  return { lt, st };
+}
+
 function expectedTaxOnYTD() {
   const inc = ytdByType();
-  const ordinary = inc.w2 + inc.contractor + inc.capital_gains + inc.interest;
-  const taxable = Math.max(0, ordinary - TAX_CONFIG.federalStandardDeduction);
-  const federal = calcFederalTax(taxable);
+  const cg = ytdCapGainsByTerm();
+
+  // Ordinary federal: W-2 + 1099 + interest + short-term cap gains
+  const ordinary = inc.w2 + inc.contractor + inc.interest + cg.st;
+  const taxableOrdinary = Math.max(0, ordinary - TAX_CONFIG.federalStandardDeduction);
+  const federalOrdinary = calcFederalTax(taxableOrdinary);
+
+  // Long-term capital gains tax: stacks on top of taxable ordinary
+  const ltcgTax = calcLTCGTax(taxableOrdinary, cg.lt);
+
+  // Net Investment Income Tax
+  const magi = ordinary + cg.lt;
+  const netInvestmentIncome = inc.interest + cg.lt + cg.st;
+  const niit = calcNIIT(magi, netInvestmentIncome);
 
   // FICA only on W-2 wages
   const ss = Math.min(inc.w2, TAX_CONFIG.ssWageBase) * TAX_CONFIG.ssRate;
@@ -1047,8 +1114,9 @@ function expectedTaxOnYTD() {
   const seMedPortion = seBase * 0.029;
   const seTax = seSSPortion + seMedPortion;
 
-  // PA: on all 4 types
-  const pa = ordinary * TAX_CONFIG.paRate;
+  // PA: 3.07% on all income types
+  const totalIncome = inc.w2 + inc.contractor + inc.interest + cg.lt + cg.st;
+  const pa = totalIncome * TAX_CONFIG.paRate;
 
   // Local EIT: only on earned income (W-2 + 1099)
   const eit = (inc.w2 + inc.contractor) * TAX_CONFIG.localEitRate;
@@ -1057,8 +1125,26 @@ function expectedTaxOnYTD() {
   const hasW2 = state.sources.some(s => s.type === "w2");
   const lst = hasW2 ? TAX_CONFIG.lstAnnual * fracYearElapsed() : 0;
 
-  const total = federal + ss + medicare + seTax + pa + eit + lst;
-  return { total, federal, ss, medicare, seTax, pa, eit, lst, taxable, ordinary, marginal: marginalFederalRate(taxable) };
+  // Self-paid (no automatic withholding) — what to set aside for quarterly estimates.
+  // Federal portion attributable to the non-W2 income, plus everything that only applies to it.
+  const wagesTaxable = Math.max(0, inc.w2 - TAX_CONFIG.federalStandardDeduction);
+  const wagesOnlyFederal = calcFederalTax(wagesTaxable);
+  const selfPaidFederal = Math.max(0, federalOrdinary - wagesOnlyFederal);
+  const selfPaidPA = (inc.contractor + inc.interest + cg.lt + cg.st) * TAX_CONFIG.paRate;
+  const selfPaidEIT = inc.contractor * TAX_CONFIG.localEitRate;
+  const selfPaidTotal = selfPaidFederal + ltcgTax + niit + seTax + selfPaidPA + selfPaidEIT;
+
+  const total = federalOrdinary + ltcgTax + niit + ss + medicare + seTax + pa + eit + lst;
+  return {
+    total,
+    federal: federalOrdinary,    // backwards-compat alias
+    federalOrdinary, ltcgTax, niit,
+    ss, medicare, seTax, pa, eit, lst,
+    selfPaidTotal,
+    taxableOrdinary,
+    ordinary, ltCapGains: cg.lt, stCapGains: cg.st,
+    marginal: marginalFederalRate(taxableOrdinary),
+  };
 }
 
 function renderAll() {
@@ -1087,10 +1173,13 @@ function renderIncome() {
     srcList.innerHTML = state.sources.map(s => {
       const fLabel = FREQ_LABELS[s.frequency] || s.frequency;
       const tShort = INCOME_TYPES[s.type] ? INCOME_TYPES[s.type].short : "";
+      const termTag = s.type === "capital_gains"
+        ? ' <span class="tag neutral">' + (s.longTerm === false ? "ST" : "LT") + '</span>'
+        : "";
       return '<div class="source-card">' +
         '<div class="row-top">' +
           '<div>' +
-            '<div class="title">' + escapeHtml(s.name) + ' <span class="tag ' + s.type + '">' + tShort + '</span></div>' +
+            '<div class="title">' + escapeHtml(s.name) + ' <span class="tag ' + s.type + '">' + tShort + '</span>' + termTag + '</div>' +
             '<div class="meta">' + fLabel + '</div>' +
           '</div>' +
           '<div style="text-align:right">' +
@@ -1140,12 +1229,21 @@ function renderIncome() {
     }).join("");
 }
 
+function onSrcTypeChange() {
+  const type = document.getElementById("srcType").value;
+  document.getElementById("srcCgTermRow").style.display = (type === "capital_gains") ? "block" : "none";
+}
+
 function addSource() {
   const name = document.getElementById("srcName").value.trim();
   if (!name) { alert("Give the source a name"); return; }
   const type = document.getElementById("srcType").value;
   const frequency = document.getElementById("srcFreq").value;
-  state.sources.push({ id: uid(), name, type, frequency });
+  const src = { id: uid(), name, type, frequency };
+  if (type === "capital_gains") {
+    src.longTerm = document.getElementById("srcCgTerm").value !== "short";
+  }
+  state.sources.push(src);
   saveState();
   document.getElementById("srcName").value = "";
   renderAll();
@@ -1204,16 +1302,22 @@ function renderTaxes() {
     dMsg.textContent = "You're under-withholding. Consider extra payment or W-4 update.";
   }
 
+  // Update self-paid tile if rendered
+  const spEl = document.getElementById("selfPaidTax");
+  if (spEl) spEl.textContent = fmt(exp.selfPaidTotal);
+
   const rows = [
-    ["Federal",           paid.federal,  exp.federal],
-    ["Social Security",   paid.ss,       exp.ss],
-    ["Medicare",          paid.medicare, exp.medicare],
+    ["Federal (Ordinary)", paid.federal,  exp.federalOrdinary],
   ];
-  if (exp.seTax > 0) rows.push(["Self-Employment Tax", 0, exp.seTax]);
-  rows.push(["PA State (3.07%)",     paid.pa,    exp.pa]);
-  rows.push(["Local EIT (1%)",       paid.eit,   exp.eit]);
-  rows.push(["LST",                  paid.lst,   exp.lst]);
-  rows.push(["Other",                paid.other, 0]);
+  if (exp.ltcgTax > 0) rows.push(["Federal (LTCG)", 0, exp.ltcgTax]);
+  if (exp.niit > 0)   rows.push(["NIIT (3.8%)",     0, exp.niit]);
+  rows.push(["Social Security",   paid.ss,       exp.ss]);
+  rows.push(["Medicare",          paid.medicare, exp.medicare]);
+  if (exp.seTax > 0)  rows.push(["Self-Employment Tax", 0, exp.seTax]);
+  rows.push(["PA State (3.07%)",  paid.pa,    exp.pa]);
+  rows.push(["Local EIT (1%)",    paid.eit,   exp.eit]);
+  rows.push(["LST",               paid.lst,   exp.lst]);
+  rows.push(["Other",             paid.other, 0]);
 
   document.querySelector("#taxGrid tbody").innerHTML = rows.map(r => {
     const name = r[0], p = r[1], e = r[2];
